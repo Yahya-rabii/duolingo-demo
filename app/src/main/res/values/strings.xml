@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Dl demo</string>
+    <string name="already_registered">already registered</string>
+    <string name="email_verify_again">email verify again</string>
+    <string name="error_view">error view</string>
+    <string name="sign_in">sign in</string>
+    <string name="terms_and_conditions">terms and conditions</string>
+    <string name="login_here">login here</string>
+    <string name="reset_password">reset password</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register_here">register here</string>
+    <string name="not_registered_yet">not registered yet</string>
+    <string name="forgot_password">forgot password</string>
+    <string name="click_here">click here</string>
+    <string name="or">or</string>
+    <string name="todo">todo</string>
+    <string name="register">register</string>
+    <string name="login">Login</string>
+</resources>
