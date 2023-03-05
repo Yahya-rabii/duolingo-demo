@@ -17,4 +17,5 @@
     <string name="todo">todo</string>
     <string name="register">register</string>
     <string name="login">Login</string>
+    <string name="logout">logout</string>
 </resources>
