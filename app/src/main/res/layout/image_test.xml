@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <ImageView
+            android:id="@+id/picture_imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="488dp"
+            android:src="@drawable/pngegg"
+            android:contentDescription="@string/todo" />
+
+        <TextView
+            android:id="@+id/word1_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/option_1" />
+
+        <TextView
+            android:id="@+id/word2_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/option_2" />
+
+        <TextView
+            android:id="@+id/word3_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/option_3" />
+
+        <TextView
+            android:id="@+id/word4_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/option_4" />
+    </LinearLayout>
+</RelativeLayout>

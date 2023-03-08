@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/thumbImage"
+        android:id="@+id/langImage"
         android:layout_width="166dp"
         android:layout_height="148dp"
         android:layout_gravity="start"
@@ -28,12 +28,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.807"
-        app:layout_constraintStart_toEndOf="@+id/thumbImage"
+        app:layout_constraintStart_toEndOf="@+id/langImage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.495">
 
         <TextView
-            android:id="@+id/brandName"
+            android:id="@+id/langName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -51,18 +51,21 @@
         android:layout_height="0dp"
         android:layout_marginEnd="36dp"
         android:background="@android:color/holo_green_dark"
-        app:layout_constraintBottom_toBottomOf="@id/thumbImage"
+        app:layout_constraintBottom_toBottomOf="@id/langImage"
         app:layout_constraintEnd_toStartOf="@id/brandLayout"
-        app:layout_constraintTop_toTopOf="@id/thumbImage"
+        app:layout_constraintTop_toTopOf="@id/langImage"
         app:layout_constraintVertical_bias="1.0" />
 
     <View
         android:id="@+id/barrier2"
         android:layout_width="1dp"
         android:layout_height="0dp"
+        android:layout_marginEnd="32dp"
         android:background="@android:color/holo_green_dark"
-        app:layout_constraintBottom_toBottomOf="@id/brandLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/brandLayout" />
+        app:layout_constraintBottom_toBottomOf="@id/langImage"
+        app:layout_constraintEnd_toStartOf="@id/brandLayout"
+        app:layout_constraintTop_toTopOf="@id/langImage"
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

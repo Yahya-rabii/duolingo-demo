@@ -1,0 +1,94 @@
+{
+  "pictures": {
+    "picture_1": {
+      "image_url": "https://www.example.com/cat.jpg",
+      "name": "cat",
+      "options": [
+        "dog",
+        "cat",
+        "bird",
+        "fish"
+      ]
+    },
+    "picture_2": {
+      "image_url": "https://www.example.com/tree.jpg",
+      "name": "tree",
+      "options": [
+        "tree",
+        "flower",
+        "car",
+        "house"
+      ]
+    },
+    "picture_3": {
+      "image_url": "https://www.example.com/book.jpg",
+      "name": "book",
+      "options": [
+        "book",
+        "pen",
+        "desk",
+        "lamp"
+      ]
+    },
+    "picture_4": {
+      "image_url": "https://www.example.com/dog.jpg",
+      "name": "dog",
+      "options": [
+        "cat",
+        "dog",
+        "bird",
+        "fish"
+      ]
+    }
+  },
+  "sentences": {
+    "sentence_1": {
+      "text": "Hello, how are you?",
+      "translation": "Bonjour, comment ça va?"
+    },
+    "sentence_2": {
+      "text": "I like pizza",
+      "translation": "J'aime la pizza"
+    },
+    "sentence_3": {
+      "text": "Can you help me?",
+      "translation": "Pouvez-vous m'aider?"
+    },
+    "sentence_4": {
+      "text": "Where is the nearest gas station?",
+      "translation": "Où est la station-service la plus proche?"
+    }
+  },
+  "texts": {
+    "text_1": {
+      "errors": [
+        "quick",
+        "brown",
+        "jumped",
+        "lazy"
+      ],
+      "text": "The quick brown fox jumped over the lazy dog"
+    },
+    "text_2": {
+      "errors": [
+        "lamb"
+      ],
+      "text": "Mary had a little lamb"
+    },
+    "text_3": {
+      "errors": [
+        "be",
+        "be"
+      ],
+      "text": "To be or not to be, that is the question"
+    },
+    "text_4": {
+      "errors": [
+        "apple",
+        "banana",
+        "orange"
+      ],
+      "text": "I like to eat apples, bananas, and oranges"
+    }
+  }
+}

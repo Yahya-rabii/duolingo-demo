@@ -40,23 +40,15 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-
-
-
         List<LangModel> langModelList = null;
         try {
             langModelList = getFinaData();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         initRecyclerView(langModelList);
 
         mAuth = FirebaseAuth.getInstance();
-
     }
 
 
@@ -119,19 +111,12 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
         String jsonStr = writer.toString();
         Gson gson = new Gson();
         LangModel[] langModels =  gson.fromJson(jsonStr, LangModel[].class);
-
         return Arrays.asList(langModels);
-
     }
-
     @Override
     public void onItemClick(LangModel langModel) {
-        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        Intent intent = new Intent(MainActivity.this, LevelsActivity.class);
         intent.putExtra("LangModel", langModel);
         startActivity(intent);
-
     }
-
-
-
 }

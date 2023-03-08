@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LevelsActivity">
+
+
+    <ImageView
+        android:id="@+id/illustration"
+        android:layout_width="238dp"
+        android:layout_height="192dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="78dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pngeggg" />
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="281dp"
+        android:layout_height="53dp"
+        android:layout_below="@+id/illustration"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="423dp"
+        android:text="@string/choose_your_level"
+        android:textColor="@color/teal_200"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/buttons_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="87dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/beginner_button"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_bg"
+            android:onClick="onBeginnerClick"
+            android:text="Beginner"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/intermediate_button"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_bg"
+            android:onClick="onIntermediateClick"
+            android:text="Intermediate"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/advanced_button"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:background="@drawable/button_bg"
+            android:onClick="onAdvancedClick"
+            android:text="@string/advanced"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

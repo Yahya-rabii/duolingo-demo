@@ -184,13 +184,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * Retreive data from input, and validate the requirement.
-     *
-     * @param input The input element.
-     * @return The input value.
-     * @throws NullPointerException If validation failed.
-     */
     private String getTextFromInput(EditText input) {
         String value = input.getText().toString();
 

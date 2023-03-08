@@ -16,8 +16,8 @@ class MyViewHolder extends RecyclerView.ViewHolder {
 
     public MyViewHolder(View view) {
         super(view);
-        langName = view.findViewById(R.id.brandName);
-        langImage = view.findViewById(R.id.thumbImage);
+        langName = view.findViewById(R.id.langName);
+        langImage = view.findViewById(R.id.langImage);
 
     }
 
