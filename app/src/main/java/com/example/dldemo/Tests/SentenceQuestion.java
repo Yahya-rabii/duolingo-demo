@@ -2,15 +2,15 @@ package com.example.dldemo.Tests;
 
 
 public class SentenceQuestion extends Question {
-    private String sentence;
+    private String text;
     private String translation;
 
-    public String getSentence() {
-        return sentence;
+    public String getText() {
+        return text;
     }
 
-    public void setSentence(String sentence) {
-        this.sentence = sentence;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getTranslation() {

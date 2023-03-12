@@ -22,7 +22,7 @@ public class SplashActivity extends AppCompatActivity {
         actionBar.hide();
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
             finish();
         }, 2000);
     }

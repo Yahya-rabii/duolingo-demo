@@ -1,6 +1,8 @@
 package com.example.dldemo.Tests;
 
-public abstract class Question {
+import java.io.Serializable;
+
+public abstract class Question  implements Serializable {
     private String id;
 
     public String getId() {
@@ -10,4 +12,5 @@ public abstract class Question {
     public void setId(String id) {
         this.id = id;
     }
+
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class PictureQuestion extends Question {
     private String name;
-    private String imageUrl;
+    private String image_url;
     private List<String> options;
 
     public String getName() {
@@ -15,12 +15,12 @@ public class PictureQuestion extends Question {
         this.name = name;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImage_Url() {
+        return image_url;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImage_Url(String image_Url) {
+        this.image_url = image_Url;
     }
 
     public List<String> getOptions() {
