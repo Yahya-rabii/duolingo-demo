@@ -112,9 +112,13 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
         Gson gson = new Gson();
         LangModel[] langModels =  gson.fromJson(jsonStr, LangModel[].class);
         return Arrays.asList(langModels);
+        
+
     }
     @Override
     public void onItemClick(LangModel langModel) {
+
+
         Intent intent = new Intent(MainActivity.this, LevelsActivity.class);
         intent.putExtra("LangModel", langModel);
         startActivity(intent);

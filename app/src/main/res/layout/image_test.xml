@@ -5,7 +5,7 @@
     <ImageView
         android:id="@+id/picture_imageview"
         android:layout_width="match_parent"
-        android:layout_height="304dp"
+        android:layout_height="311dp"
         android:scaleType="centerCrop"
         android:src="@drawable/pngegg" />
 
@@ -25,12 +25,13 @@
         android:id="@+id/options_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="461dp"
+        android:layout_below="@+id/question_textview"
         android:orientation="horizontal"
         android:padding="16dp">
 
-        <TextView
+
+
+        <Button
             android:id="@+id/option1_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -44,7 +45,11 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
-        <TextView
+
+
+
+
+        <Button
             android:id="@+id/option2_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -59,7 +64,7 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
-        <TextView
+        <Button
             android:id="@+id/option3_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -74,7 +79,7 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
-        <TextView
+        <Button
             android:id="@+id/option4_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -89,12 +94,15 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
     </LinearLayout>
+
     <TextView
         android:id="@+id/selected_option_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/options_layout"
         android:layout_below="@+id/options_layout"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="-167dp"
+        android:layout_marginBottom="13dp"
         android:padding="16dp"
         android:text=""
         android:textColor="@android:color/black"

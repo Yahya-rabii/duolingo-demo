@@ -118,7 +118,20 @@ public class TestActivity extends AppCompatActivity {
                         Intent intent = new Intent(TestActivity.this, PictureQuestionActivity.class);
                         intent.putExtra("pictureQuestion", pictureQuestion);
                         startActivity(intent);
-                    }
+
+                    } else if (question instanceof TextQuestion) {
+                        //todo Redirect the user to the TextQuestionActivity and pass the data to display it
+                        TextQuestion textQuestion = (TextQuestion) question;
+                        Intent intent = new Intent(TestActivity.this, TextQuestionActivity.class);
+                        intent.putExtra("textQuestion", textQuestion);
+                        startActivity(intent);
+                    } else if (question instanceof SentenceQuestion) {
+                        //todo Redirect the user to the PictureQuestionActivity and pass the data to display it
+                        SentenceQuestion sentenceQuestion = (SentenceQuestion) question;
+                        Intent intent = new Intent(TestActivity.this, SentenceQuestionActivity.class);
+                        intent.putExtra("sentenceQuestion", sentenceQuestion);
+                        startActivity(intent); }
+
                 }
 
 
@@ -126,7 +139,7 @@ public class TestActivity extends AppCompatActivity {
 
             }
 
-//todo here i want to implement the functions in order  to display every  type of question to the user (every type of qquestion in a different layout)
+// todo i want to implement the functions in order  to display every  type of question to the user (every type of qquestion in a different layout)
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
