@@ -46,10 +46,10 @@ public class PictureQuestionActivity extends AppCompatActivity {
         option4TextView.setText(mQuestion.getOptions().get(3));
 
 
-        Button opt1 = findViewById(R.id.option1_textview);
-        Button opt2 = findViewById(R.id.option2_textview);
-        Button opt3 = findViewById(R.id.option3_textview);
-        Button opt4 = findViewById(R.id.option4_textview);
+        TextView opt1 = findViewById(R.id.option1_textview);
+        TextView opt2 = findViewById(R.id.option2_textview);
+        TextView opt3 = findViewById(R.id.option3_textview);
+        TextView opt4 = findViewById(R.id.option4_textview);
 
 
         opt1.setOnClickListener(view -> {

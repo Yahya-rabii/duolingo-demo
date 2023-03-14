@@ -31,7 +31,7 @@
 
 
 
-        <Button
+        <TextView
             android:id="@+id/option1_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
 
 
 
-        <Button
+        <TextView
             android:id="@+id/option2_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
-        <Button
+        <TextView
             android:id="@+id/option3_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
-        <Button
+        <TextView
             android:id="@+id/option4_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
