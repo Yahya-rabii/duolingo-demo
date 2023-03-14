@@ -16,6 +16,7 @@ public class PictureQuestionActivity extends AppCompatActivity {
     private int mNumAttempts = 0;
     private boolean mAnsweredCorrectly = false;
     private TextView selectedOptionTextView;
+    private String selectedOption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,17 +65,20 @@ public class PictureQuestionActivity extends AppCompatActivity {
             this.selectedOptionTextView = option4TextView;
         });
 
-
         // Set up the logic to check the answer
         Button submitButton = findViewById(R.id.submit_button);
         submitButton.setOnClickListener(view -> {
             if (!mAnsweredCorrectly) {
                 // Check if the selected answer is correct
                 if (selectedOptionTextView != null) {
-                    String selectedOption = selectedOptionTextView.getText().toString();
+
+                    this.selectedOption = selectedOptionTextView.getText().toString();
+
+                    TextView feedbackTextView = findViewById(R.id.selected_option_textview);
+                    feedbackTextView.setText(this.selectedOption);
                 }
 
-                String selectedOption = "rien";
+                else this.selectedOption = "rien";
 
 
 
@@ -88,6 +92,8 @@ public class PictureQuestionActivity extends AppCompatActivity {
                     mAnsweredCorrectly = true;
                     feedbackTextView = findViewById(R.id.selected_option_textview);
                     feedbackTextView.setText("Correct!");
+                    ScoreView scoreView = findViewById(R.id.scoreView);
+                    ScoreView.incrementScore();
                     finish();
 
                 } else {

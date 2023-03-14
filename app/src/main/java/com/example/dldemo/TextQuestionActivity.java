@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -51,14 +50,20 @@ public class TextQuestionActivity extends AppCompatActivity {
                 }
             }
 
+            TextView feedback;
             if (isCorrect) {
-                // If the answer is correct, show a message to the user
-                Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
+
+                feedback = findViewById(R.id.selected_option_textview);
+                feedback.setText("Correct!");
+                ScoreView scoreView = findViewById(R.id.scoreView);
+                ScoreView.incrementScore();
                 finish();
+
 
             } else {
                 // If the answer is incorrect, show a message to the user and allow them to try again
-                Toast.makeText(this, "Incorrect. Try again.", Toast.LENGTH_SHORT).show();
+                feedback = findViewById(R.id.selected_option_textview);
+                feedback.setText("Incorrect!");
                 finish();
             }
         });

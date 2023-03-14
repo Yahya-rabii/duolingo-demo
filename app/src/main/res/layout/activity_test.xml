@@ -11,11 +11,11 @@
 
         <TextView
             android:id="@+id/test_title_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test_title"
+            android:layout_width="277dp"
+            android:layout_height="48dp"
+            android:text="Test Score"
             android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/test_instructions_textview"
@@ -25,12 +25,28 @@
             android:textSize="16sp"
             android:layout_marginTop="16dp"/>
 
+        <com.example.dldemo.ScoreView
+            android:id="@+id/scoreView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/scoreper"
+            android:layout_width="277dp"
+            android:layout_height="48dp"
+            android:text="0 %"
+            android:textSize="24sp"
+            android:textColor="@color/teal_200"
+            android:textStyle="bold" />
+
         <Button
-            android:id="@+id/start_test_button"
+            android:id="@+id/try_again_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/start_test"
-            android:layout_marginTop="16dp"/>
+            android:text="Try Again"
+            android:visibility="gone" />
 
     </LinearLayout>
 

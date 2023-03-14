@@ -5,6 +5,8 @@ import static android.content.ContentValues.TAG;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +27,7 @@ import java.util.List;
 
 public class TestActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
+    private ScoreView scoreView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +37,25 @@ public class TestActivity extends AppCompatActivity {
         // Get a reference to the Firebase database
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        // Get a reference to the ScoreView
+        scoreView = findViewById(R.id.scoreView);
+
         // Call the method to load and display the questions
         loadQuestions();
+
+        // Set the OnClickListener for the "Try Again" button
+        Button tryAgainButton = findViewById(R.id.try_again_button);
+        tryAgainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Reset the score
+                ScoreView.resetScore();
+
+                // Start the MainActivity
+                Intent intent = new Intent(TestActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void loadQuestions() {

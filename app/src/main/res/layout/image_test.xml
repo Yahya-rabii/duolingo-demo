@@ -41,6 +41,7 @@
             android:focusable="true"
             android:gravity="center"
             android:minHeight="48dp"
+            android:onClick="optfunc"
             android:text="@string/option_1"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
