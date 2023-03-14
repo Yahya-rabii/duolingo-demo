@@ -27,6 +27,7 @@ public class PictureQuestionActivity extends AppCompatActivity {
 
         // Set the image
         ImageView imageView = findViewById(R.id.picture_imageview);
+        System.out.println("hahouwa"+mQuestion.getImage_Url());
         Picasso.get().load(mQuestion.getImage_Url()).into(imageView);
 
         // Set the question text

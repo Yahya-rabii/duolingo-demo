@@ -1,0 +1,191 @@
+{
+  "enpictures": {
+    "picture_1": {
+      "image_url": "https://images.pexels.com/photos/982300/pexels-photo-982300.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "name": "cat",
+      "options": [
+        "dog",
+        "cat",
+        "bird",
+        "fish"
+      ]
+    },
+    "picture_2": {
+      "image_url": "https://images.pexels.com/photos/1687878/pexels-photo-1687878.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "name": "tree",
+      "options": [
+        "tree",
+        "flower",
+        "car",
+        "house"
+      ]
+    },
+    "picture_3": {
+      "image_url": "https://images.pexels.com/photos/762687/pexels-photo-762687.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "name": "book",
+      "options": [
+        "book",
+        "pen",
+        "desk",
+        "lamp"
+      ]
+    },
+    "picture_4": {
+      "image_url": "https://images.pexels.com/photos/850602/pexels-photo-850602.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "name": "dog",
+      "options": [
+        "cat",
+        "dog",
+        "bird",
+        "fish"
+      ]
+    }
+  },
+  "ensentences": {
+    "sentence_1": {
+      "text": "Hello, how are you?",
+      "translation": "Bonjour, comment ça va?"
+    },
+    "sentence_2": {
+      "text": "I like pizza",
+      "translation": "J'aime la pizza"
+    },
+    "sentence_3": {
+      "text": "Can you help me?",
+      "translation": "Pouvez-vous m'aider?"
+    },
+    "sentence_4": {
+      "text": "Where is the nearest gas station?",
+      "translation": "Où est la station-service la plus proche?"
+    }
+  },
+  "entexts": {
+    "text_1": {
+      "errors": [
+        "quick",
+        "brown",
+        "jumped",
+        "lazy"
+      ],
+      "text": "The quick brown fox jumped over the lazy dog"
+    },
+    "text_2": {
+      "errors": [
+        "lamb"
+      ],
+      "text": "Mary had a little lamb"
+    },
+    "text_3": {
+      "errors": [
+        "be",
+        "be"
+      ],
+      "text": "To be or not to be, that is the question"
+    },
+    "text_4": {
+      "errors": [
+        "apple",
+        "banana",
+        "orange"
+      ],
+      "text": "I like to eat apples, bananas, and oranges"
+    }
+  },
+
+
+  "arpictures": {
+    "picture_1": {
+      "image_url": "https://images.pexels.com/photos/982300/pexels-photo-982300.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "name": "قطة",
+      "options": [
+        "كلب",
+        "قطة",
+        "طائر",
+        "سمكة"
+      ]
+    },
+    "picture_2": {
+      "image_url": "https://images.pexels.com/photos/1687878/pexels-photo-1687878.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "name":  "شجرة",
+      "options": [
+        "شجرة",
+        "ورد",
+        "سيارة",
+        "منزل"
+      ]
+    },
+    "picture_3": {
+      "image_url": "https://images.pexels.com/photos/762687/pexels-photo-762687.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "name": "كتاب",
+      "options": [
+        "كتاب",
+        "قلم",
+        "مكتب",
+        "خروف"
+      ]
+    },
+    "picture_4": {
+      "image_url": "https://images.pexels.com/photos/850602/pexels-photo-850602.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "name": "كلب",
+      "options": [
+        "قطة",
+        "كلب",
+        "طائر",
+        "سمكة"
+      ]
+    }
+  },
+  "arsentences": {
+    "sentence_1": {
+      "text": "مرحبا، كيف حالك؟",
+      "translation": "Bonjour, comment ça va?"
+    },
+    "sentence_2": {
+      "text": "أنا أحب البيتزا",
+      "translation": "J'aime la pizza"
+    },
+    "sentence_3": {
+      "text": "هل بإمكانك مساعدتي؟",
+      "translation": "Pouvez-vous m'aider?"
+    },
+    "sentence_4": {
+      "text": "أين أقرب محطة وقود؟",
+      "translation": "Où est la station-service la plus proche?"
+    }
+  },
+  "artexts": {
+    "text_1": {
+      "errors": [
+        "سريع",
+        "بني",
+        "قفز",
+        "كسول"
+      ],
+      "text": "قفز الثعلب البني السريع فوق الكلب الكسول"
+    },
+    "text_2": {
+      "errors": [
+        "حمل"
+      ],
+      "text": "مريم لديها حمل صغير"
+    },
+    "text_3": {
+      "errors": [
+        "نكون",
+        "نكون"
+      ],
+      "text": "أن نكون أو لا نكون ، هذا هو السؤال"
+    },
+    "text_4": {
+      "errors": [
+        "تفاحة",
+        "موز",
+        "البرتقالي"
+      ],
+      "text": "أحب أكل التفاح والموز والبرتقال"
+    }
+  }
+
+
+
+}

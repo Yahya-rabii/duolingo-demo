@@ -15,7 +15,8 @@
         android:layout_below="@id/sentence_textview"
         android:hint="@string/enter_your_translation_here"
         android:autofillHints=""
-        android:inputType="text" />
+        android:inputType="text"
+        android:textColor="@color/teal_200"/>
     <Button
         android:id="@+id/submit_button"
         android:layout_width="139dp"

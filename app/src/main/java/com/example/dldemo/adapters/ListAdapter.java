@@ -33,6 +33,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
         this.langModelList = langModelList;
         notifyDataSetChanged();
     }
+    public void setData(List<LangModel> data) {
+        this.langModelList = data;
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override

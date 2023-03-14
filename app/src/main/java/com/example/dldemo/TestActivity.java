@@ -39,6 +39,7 @@ public class TestActivity extends AppCompatActivity {
     }
 
     private void loadQuestions() {
+        String language = getIntent().getStringExtra("Language");
 
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -49,37 +50,61 @@ public class TestActivity extends AppCompatActivity {
                 List<PictureQuestion> pictureQuestions = new ArrayList<>();
                 List<TextQuestion> textQuestions = new ArrayList<>();
 
-                for (DataSnapshot childSnapshot : snapshot.child("sentences").getChildren()) {
-                    SentenceQuestion question = childSnapshot.getValue(SentenceQuestion.class);
-                    sentenceQuestions.add(question);
-                }
+                if (language.toLowerCase().equals("english")) {
 
-                for (DataSnapshot childSnapshot : snapshot.child("pictures").getChildren()) {
-                    PictureQuestion question = childSnapshot.getValue(PictureQuestion.class);
-                    pictureQuestions.add(question);
-                }
+                    for (DataSnapshot childSnapshot : snapshot.child("ensentences").getChildren()) {
+                        SentenceQuestion question = childSnapshot.getValue(SentenceQuestion.class);
+                        sentenceQuestions.add(question);
+                    }
 
-                for (DataSnapshot childSnapshot : snapshot.child("texts").getChildren()) {
-                    TextQuestion question = childSnapshot.getValue(TextQuestion.class);
-                    textQuestions.add(question);
-                }
+                    for (DataSnapshot childSnapshot : snapshot.child("enpictures").getChildren()) {
+                        PictureQuestion question = childSnapshot.getValue(PictureQuestion.class);
+                        pictureQuestions.add(question);
+                    }
 
+                    for (DataSnapshot childSnapshot : snapshot.child("entexts").getChildren()) {
+                        TextQuestion question = childSnapshot.getValue(TextQuestion.class);
+                        textQuestions.add(question);
+                    }
+                }     if (language.toLowerCase().equals("arabic")) {
+
+                    for (DataSnapshot childSnapshot : snapshot.child("arsentences").getChildren()) {
+                        SentenceQuestion question = childSnapshot.getValue(SentenceQuestion.class);
+                        sentenceQuestions.add(question);
+                    }
+
+                    for (DataSnapshot childSnapshot : snapshot.child("arpictures").getChildren()) {
+                        PictureQuestion question = childSnapshot.getValue(PictureQuestion.class);
+                        pictureQuestions.add(question);
+                    }
+
+                    for (DataSnapshot childSnapshot : snapshot.child("artexts").getChildren()) {
+                        TextQuestion question = childSnapshot.getValue(TextQuestion.class);
+                        textQuestions.add(question);
+                    }
+                }     if (language.toLowerCase().equals("french")) {
+
+                    for (DataSnapshot childSnapshot : snapshot.child("frsentences").getChildren()) {
+                        SentenceQuestion question = childSnapshot.getValue(SentenceQuestion.class);
+                        sentenceQuestions.add(question);
+                    }
+
+                    for (DataSnapshot childSnapshot : snapshot.child("frpictures").getChildren()) {
+                        PictureQuestion question = childSnapshot.getValue(PictureQuestion.class);
+                        pictureQuestions.add(question);
+                    }
+
+                    for (DataSnapshot childSnapshot : snapshot.child("frtexts").getChildren()) {
+                        TextQuestion question = childSnapshot.getValue(TextQuestion.class);
+                        textQuestions.add(question);
+                    }
+                }
                 // Shuffle the questions and select 10 of them randomly
                 List<Question> questions = new ArrayList<>();
                 questions.addAll(sentenceQuestions);
                 questions.addAll(pictureQuestions);
                 questions.addAll(textQuestions);
                 Collections.shuffle(questions);
-
-
-                for (SentenceQuestion question : sentenceQuestions) {
-                    System.out.println("Sentence: " + question.getText());
-                    System.out.println("Translation: " + question.getTranslation());
-                }
-                for (TextQuestion question : textQuestions) {
-                    System.out.println("text: " + question.getText());
-                    System.out.println("errors: " + question.getErrors());
-                }
                 for (PictureQuestion question : pictureQuestions) {
                     System.out.println("img url: " + question.getImage_Url());
                     System.out.println("name: " + question.getName());
@@ -87,6 +112,16 @@ public class TestActivity extends AppCompatActivity {
                         System.out.println("opt: " + i + question.getOptions().get(i));
                     }
                 }
+
+              /*  for (SentenceQuestion question : sentenceQuestions) {
+                    System.out.println("Sentence: " + question.getText());
+                    System.out.println("Translation: " + question.getTranslation());
+                }
+                for (TextQuestion question : textQuestions) {
+                    System.out.println("text: " + question.getText());
+                    System.out.println("errors: " + question.getErrors());
+                }
+
 
                 System.out.println("sentenceQuestions" + sentenceQuestions.size());
                 System.out.println("pictureQuestions" + pictureQuestions.size());
@@ -96,18 +131,20 @@ public class TestActivity extends AppCompatActivity {
 
                 for (int kk = 0; kk < questions.size(); kk++) {
                     System.out.println("questions" + questions.get(kk));
-                }
+                }*/
 
                 List<Question> selectedQuestions = new ArrayList<>();
                 if (questions.size() >= 10) {
                     selectedQuestions = questions.subList(0, 10);
                 }
-                System.out.println("ssss" + selectedQuestions);
-                System.out.println("ssssize" + selectedQuestions.size());
-                System.out.println("qqqq" + questions.size());
+               // System.out.println("ssss" + selectedQuestions);
+                //System.out.println("ssssize" + selectedQuestions.size());
+                //System.out.println("qqqq" + questions.size());
 
 
-                System.out.println("sentence" + selectedQuestions.get(2));//null
+                //System.out.println("sentence" + selectedQuestions.get(2));//null
+
+
 
                 // Display the questions to the user
                 for (int i = 0; i < selectedQuestions.size(); i++) {

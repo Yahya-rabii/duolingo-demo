@@ -26,7 +26,8 @@
         android:layout_below="@id/textview_with_errors"
         android:layout_marginTop="32dp"
         android:hint="@string/enter_your_correction_here"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textColor="@color/teal_200"/>
 
     <Button
         android:id="@+id/submit_button"
