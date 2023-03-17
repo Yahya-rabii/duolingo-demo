@@ -27,7 +27,9 @@
         android:layout_marginTop="32dp"
         android:hint="@string/enter_your_correction_here"
         android:inputType="text"
-        android:textColor="@color/teal_200"/>
+        android:minHeight="48dp"
+        android:textColor="@color/teal_200"
+        android:textColorHint="#757575" />
 
 
     <TextView
