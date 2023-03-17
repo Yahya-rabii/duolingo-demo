@@ -27,7 +27,8 @@
         android:layout_marginTop="32dp"
         android:hint="@string/enter_your_translation_here"
         android:inputType="text"
-        android:textColor="@color/teal_200"/>
+        android:minHeight="48dp"
+        android:textColor="@color/teal_200" />
 
 
     <TextView

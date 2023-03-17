@@ -4,8 +4,9 @@
     <color name="purple_500">#7ac70c</color>
     <color name="purple_700">#7ac70c</color>
     <color name="teal_200">#7ac70c</color>
-    <color name="teal_700">#7ac70c</color>
+    <color name="teal_700">#426C07</color>
     <color name="black">#FF000000</color>
     <color name="green">#7ac70c</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color>
 </resources>
