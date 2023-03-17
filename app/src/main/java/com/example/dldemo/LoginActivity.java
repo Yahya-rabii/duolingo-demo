@@ -322,7 +322,7 @@ public class LoginActivity extends AppCompatActivity {
 
             final String uid = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
 
-            final User user = new User(signInAccount.getDisplayName(), signInAccount.getEmail() , signInAccount.getPhotoUrl() , false);
+            final User user = new User(signInAccount.getDisplayName(), signInAccount.getEmail()  , false);
 
             UserProfileChangeRequest.Builder profileUpdates = new UserProfileChangeRequest.Builder();
             profileUpdates.setDisplayName(signInAccount.getDisplayName());

@@ -44,39 +44,68 @@ public class ScoreView extends View {
     @SuppressLint("SetTextI18n")
     @Override
     protected void onDraw(Canvas canvas) {
-
-        super.onDraw(canvas);
-
-        // Calculate score percentage
-        float scorePercentage = (float) currentScore / maxScore;
-
-        // Get dimensions of the view
-        int width = getWidth();
-        int height = getHeight();
-
-        // Draw background
-        canvas.drawCircle(width / 2f, height / 2f, width / 2f, backgroundPaint);
-
-        // Draw border
-        canvas.drawCircle(width / 2f, height / 2f, width / 2f - 4, borderPaint);
-
-        // Draw score
-        float sweepAngle = scorePercentage * 360;
-        canvas.drawArc(new RectF(4, 4, width - 4, height - 4), -90, sweepAngle, true, scorePaint);
+        if (currentScore == 0) {
 
 
+            View parentView = (View) getParent();
+            TextView scoreTextView = parentView.findViewById(R.id.scoreper);
+            scoreTextView.setText("  ");
 
-        if (currentScore >0 && currentScore< 60) {
+            TextView test_title_textview = parentView.findViewById(R.id.test_title_textview);
+            test_title_textview.setText(" ");
+
+        } else if (currentScore > 0 && currentScore < 60) {
+
+            super.onDraw(canvas);
+
+            // Calculate score percentage
+            float scorePercentage = (float) currentScore / maxScore;
+
+            // Get dimensions of the view
+            int width = getWidth();
+            int height = getHeight();
+
+            // Draw background
+            canvas.drawCircle(width / 2f, height / 2f, width / 2f, backgroundPaint);
+
+            // Draw border
+            canvas.drawCircle(width / 2f, height / 2f, width / 2f - 4, borderPaint);
+
+            // Draw score
+            float sweepAngle = scorePercentage * 360;
+            canvas.drawArc(new RectF(4, 4, width - 4, height - 4), -90, sweepAngle, true, scorePaint);
+
+
             View parentView = (View) getParent();
             Button tryAgainButton = parentView.findViewById(R.id.try_again_button);
             tryAgainButton.setVisibility(View.VISIBLE);
             TextView scoreTextView = parentView.findViewById(R.id.scoreper);
-            scoreTextView.setText(" you get only  ="+currentScore + " %");
-        }
-        else {
+            scoreTextView.setText(" you get only  =" + currentScore + " %");
+        } else {
+
+            super.onDraw(canvas);
+
+            // Calculate score percentage
+            float scorePercentage = (float) currentScore / maxScore;
+
+            // Get dimensions of the view
+            int width = getWidth();
+            int height = getHeight();
+
+            // Draw background
+            canvas.drawCircle(width / 2f, height / 2f, width / 2f, backgroundPaint);
+
+            // Draw border
+            canvas.drawCircle(width / 2f, height / 2f, width / 2f - 4, borderPaint);
+
+            // Draw score
+            float sweepAngle = scorePercentage * 360;
+            canvas.drawArc(new RectF(4, 4, width - 4, height - 4), -90, sweepAngle, true, scorePaint);
+
+
             View parentView = (View) getParent();
             TextView scoreTextView = parentView.findViewById(R.id.scoreper);
-            scoreTextView.setText(" good !!! you get  ="+currentScore + " %");
+            scoreTextView.setText(" good !!! you get  =" + currentScore + " %");
         }
     }
 

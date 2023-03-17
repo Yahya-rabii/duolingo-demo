@@ -1,7 +1,9 @@
 package com.example.dldemo;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +21,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.dldemo.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,6 +38,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -54,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
     private String fullName, username, email;
     private Uri mImageUri;
     private StorageReference mStorage;
+    private static final int PERMISSION_REQUEST_READ_EXTERNAL_STORAGE = 1000;
 
     @Override
     public void onBackPressed() {
@@ -80,14 +86,18 @@ public class RegisterActivity extends AppCompatActivity {
         mProfileImage = findViewById(R.id.profileScreenImageView);//todo
         mChooseImageButton = findViewById(R.id.profileScreenImageButton);
 
-        mChooseImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openFileChooser();
-            }
-        });
+        mChooseImageButton.setOnClickListener(v -> openFileChooser());
         if (mImageUri != null) {
-            uploadImage();
+
+            if (ContextCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(RegisterActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_READ_EXTERNAL_STORAGE);
+            } else {
+                // Permission has already been granted
+                // Call method to access media document provider here
+                uploadImage();
+            }
+
+
         }
 
         nameEditText.addTextChangedListener(new TextWatcher() {
@@ -223,7 +233,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: terms and conditions pressed");
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/document/d/1MKWGuegWbqugvAPzyNpF0oVYQpDsIZON1DJr8Ap9CWc/edit?usp=sharing"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(" ./todo "));
                 startActivity(Intent.createChooser(browserIntent, "Select the app to open the link"));
             }
         });
@@ -328,6 +338,9 @@ public class RegisterActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "onComplete: account created");
                             storeUserDetails();
+                            //todo store the image as well
+
+
                         } else {
                             findViewById(R.id.createAccountScreenProgressBar).setVisibility(View.INVISIBLE);
                             Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -335,18 +348,15 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
     }
-
     private void storeUserDetails() {
-
-
-
         Log.d(TAG, "storeUserDetails: starts");
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        System.out.println("sdsqfsfdsfdsfdsf"+mImageUri);
-        final User user = new User(fullName, username, email, mImageUri , FirebaseAuth.getInstance().getCurrentUser().isEmailVerified());
+        System.out.println("sdsqfsfdsfdsfdsf" + mImageUri);
+        final User user = new User(fullName, username, email, FirebaseAuth.getInstance().getCurrentUser().isEmailVerified());
 
         UserProfileChangeRequest.Builder profileUpdates = new UserProfileChangeRequest.Builder();
         profileUpdates.setDisplayName(fullName);
+        FirebaseStorage storage = FirebaseStorage.getInstance();
 
         FirebaseAuth.getInstance().getCurrentUser().updateProfile(profileUpdates.build())
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -362,29 +372,61 @@ public class RegisterActivity extends AppCompatActivity {
                             FirebaseDatabase.getInstance().getReference().child("usernames").child(uid).setValue(username);
 
                             Log.d(TAG, "onComplete: starting main activity");
-                            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                            finishAffinity();
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
+                            FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d(TAG, "onComplete: Verification mail sent successfully");
+                                    } else {
+                                        Log.d(TAG, "onComplete: Verification mail could not be sent");
+                                    }
+                                }
+                            });
+                            final String imageName = UUID.randomUUID().toString();
+                            StorageReference imagesRef = storage.getReference().child("images").child(uid).child(imageName);
+
+                            UploadTask uploadTask = imagesRef.putFile(mImageUri);
+                            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                    // Image uploaded successfully
+                                    System.out.println("Image uploaded successfully");
+                                    // Get the download URL of the image
+                                    imagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            // Store the download URL in the user object
+                                            System.out.println("Store the download URL in the user object");
+
+                                            user.setProfileImageUrl(uri.toString());
+                                            // Store the user details in the Firebase Realtime Database
+                                            FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(user);
+
+                                            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                            finishAffinity();
+
+                                        }
+                                    });
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    // Image upload failed
+                                    findViewById(R.id.createAccountScreenProgressBar).setVisibility(View.INVISIBLE);
+                                    Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         } else {
                             Log.d(TAG, "onComplete: Could not update display name");
                         }
                     }
                 });
 
-        FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Log.d(TAG, "onComplete: Verification mail sent successfully");
-                } else {
-                    Log.d(TAG, "onComplete: Verification mail could not be sent");
-                }
-            }
-        });
-
         Log.d(TAG, "storeUserDetails: ends");
     }
+
 
     private boolean validateFields() {
         fullName = nameEditText.getText().toString();

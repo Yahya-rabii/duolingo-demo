@@ -37,6 +37,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -92,7 +99,39 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
                         .placeholder(R.drawable.user_icon)
                         .into(profileImage);
             } else {
-                profileImage.setImageResource(R.drawable.user_icon);
+
+
+
+                final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+// Get the Firebase storage reference for the profile image
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                StorageReference storageRef = storage.getReference().child("images").child(uid).child("profile.jpg");
+
+// Get the profileImageUrl from the Firebase Realtime Database
+                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
+                userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            String profileImageUrl = snapshot.child("profileImageUrl").getValue(String.class);
+                            if (profileImageUrl != null) {
+                                // Load the profile image into the ImageView using Picasso
+                                Picasso.get().load(profileImageUrl).into(profileImage);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d(TAG, "onCancelled: " + error.getMessage());
+                    }
+                });
+
+
+
+
+
             }
 
             profileEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
@@ -281,33 +320,6 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
         }
     }
 
-
-    private void signOut() {
-        FirebaseAuth.getInstance().signOut();
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(MainActivity.this, gso);
-        googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (!task.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "Could not sign out. Please try again", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
-
-
-
-
-
-
-
-
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Log.d(TAG, "onNavigationItemSelected: starts");
@@ -387,4 +399,29 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
                 return false;
         }
     }
+
+
+
+
+    private void signOut() {
+        FirebaseAuth.getInstance().signOut();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(MainActivity.this, gso);
+        googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (!task.isSuccessful()) {
+                    Toast.makeText(MainActivity.this, "Could not sign out. Please try again", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+
+
+
+
 }

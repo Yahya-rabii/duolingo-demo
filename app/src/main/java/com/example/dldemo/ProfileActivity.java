@@ -34,6 +34,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -88,7 +89,53 @@ public class ProfileActivity extends AppCompatActivity {
 				mFullNameField.setText(fullName);
 				mEmailField.setText(email);
 				mUsernameField.setText(username);
+
+
+
+
+
+				final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+// Get the Firebase storage reference for the profile image
+				FirebaseStorage storage = FirebaseStorage.getInstance();
+				StorageReference storageRef = storage.getReference().child("images").child(uid).child("profile.jpg");
+
+// Get the profileImageUrl from the Firebase Realtime Database
+				DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
+				userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+					@Override
+					public void onDataChange(@NonNull DataSnapshot snapshot) {
+						if (snapshot.exists()) {
+							String profileImageUrl = snapshot.child("profileImageUrl").getValue(String.class);
+							if (profileImageUrl != null) {
+								// Load the profile image into the ImageView using Picasso
+								Picasso.get().load(profileImageUrl).into(mProfileImage);
+							}
+						}
+					}
+
+					@Override
+					public void onCancelled(@NonNull DatabaseError error) {
+						Log.d(TAG, "onCancelled: " + error.getMessage());
+					}
+				});
+
+
+
+
+
+
+
+
+
 			}
+
+
+
+
+
+
+
 
 			@Override
 			public void onCancelled(@NonNull DatabaseError error) {

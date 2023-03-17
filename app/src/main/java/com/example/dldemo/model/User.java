@@ -1,7 +1,6 @@
 package com.example.dldemo.model;
 
 
-import android.net.Uri;
 import android.util.Patterns;
 
 import java.util.UUID;
@@ -9,23 +8,25 @@ import java.util.UUID;
 public class User {
 	private String fullName, username, email;
 	private Boolean isEmailVerified;
-	private Uri im;
+	private String im;
 	public User() {
 	}
-	
-	public User(String fullName, String email, Uri image, Boolean isEmailVerified) {
+
+	public void setProfileImageUrl(String im) {
+		this.im = im;
+	}
+
+	public User(String fullName, String email, Boolean isEmailVerified) {
 		this.fullName = fullName;
 		this.email = email;
-		this.im = image;
 		this.isEmailVerified = isEmailVerified;
 		generateUsername();
 	}
 	
-	public User(String fullName, String username, String email,  Uri image,Boolean isEmailVerified) {
+	public User(String fullName, String username, String email,Boolean isEmailVerified) {
 		this.fullName = fullName;
 		this.username = username;
 		this.email = email;
-		this.im = image;
 		this.isEmailVerified = isEmailVerified;
 	}
 	
