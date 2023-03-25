@@ -38,6 +38,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
@@ -50,8 +53,6 @@ import java.util.Objects;
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
 
-    private final int RC_SIGN_IN = 123;
-
     private final String REMEMBER_ME_ENABLED = "rememberMeEnabled";
     private final String REMEMBER_ME_EMAIL = "rememberMeEmail";
     private final String REMEMBER_ME_PASSWORD = "rememberMePassword";
@@ -63,28 +64,40 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox rememberMe;
 
     private GoogleSignInClient mGoogleSignInClient;
+    private static final int RC_SIGN_IN = 123;
 
+    /**
+     * Handles the result of the Google sign-in Intent.
+     *
+     * @param requestCode The request code passed to startActivityForResult().
+     * @param resultCode The result code returned by the child Activity.
+     * @param data The Intent that was returned by the child Activity.
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        // Check if the result is from the Google sign-in Intent.
         if (requestCode == RC_SIGN_IN) {
+            // Show a progress bar to indicate that the login process is in progress.
             findViewById(R.id.loginScreenProgressBar).setVisibility(View.VISIBLE);
+
+            // Get the result of the Google sign-in Intent.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
-                // Google Sign In was successful, authenticate with Firebase
+                // If sign-in was successful, authenticate with Firebase.
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
                 e.printStackTrace();
+                // If sign-in failed, hide the progress bar and show an error message.
                 findViewById(R.id.loginScreenProgressBar).setVisibility(View.INVISIBLE);
-                // In case of Login failed because of any reason
                 Toast.makeText(this,"Login unsuccessful, Please try again", Toast.LENGTH_LONG).show();
             }
         }
     }
+
 
     @Override
     protected void onResume() {
@@ -290,7 +303,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
     private void firebaseAuthWithGoogle(String idToken) {
         Log.d(TAG, "firebaseAuthWithGoogle: starts");
 
@@ -306,11 +318,22 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-
     private void handleFirebaseAuthError(Task<AuthResult> task) {
-        findViewById(R.id.loginScreenProgressBar).setVisibility(View.INVISIBLE);
-        Toast.makeText(LoginActivity.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-        task.getException().printStackTrace();
+        try {
+            throw task.getException();
+        } catch (FirebaseAuthInvalidUserException e) {
+            Log.e(TAG, "handleFirebaseAuthError: invalid user", e);
+            // ...
+        } catch (FirebaseAuthInvalidCredentialsException e) {
+            Log.e(TAG, "handleFirebaseAuthError: invalid credentials", e);
+            // ...
+        } catch (FirebaseAuthUserCollisionException e) {
+            Log.e(TAG, "handleFirebaseAuthError: user already exists", e);
+            // ...
+        } catch (Exception e) {
+            Log.e(TAG, "handleFirebaseAuthError: other error", e);
+            // ...
+        }
     }
 
     private void storeUserDetails() {

@@ -11,21 +11,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.NavOptions;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dldemo.adapters.ListAdapter;
 import com.example.dldemo.model.LangModel;
-import com.example.dldemo.utils.Connection;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -57,7 +53,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ListAdapter.FinaListClickListener,NavigationView.OnNavigationItemSelectedListener, NavController.OnDestinationChangedListener {
+public class MainActivity extends AppCompatActivity implements ListAdapter.FinaListClickListener,NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MainActivity";
     public BottomAppBar mBottomAppBar;
     public DrawerLayout mDrawerLayout;
@@ -293,32 +289,7 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
 
 
 
-    @Override
-    public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-        Log.d(TAG, "onDestinationChanged: starts");
-        fab.setOnClickListener(null);
-        switch (destination.getId()) {
-            case R.id.nav_home:
-                mBottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
-                mBottomAppBar.setVisibility(View.VISIBLE);
-                mBottomAppBar.performShow();
-                mBottomAppBar.bringToFront();
 
-                fab.show();
-                fab.setImageResource(R.drawable.plus_icon);
-                fab.setVisibility(View.VISIBLE);
-                break;
-
-            case R.id.nav_profile:
-            case R.id.nav_about_us:
-                mBottomAppBar.setVisibility(View.GONE);
-                fab.setVisibility(View.GONE);
-                fab.hide();
-                break;
-            default:
-                break;
-        }
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -333,17 +304,11 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
         switch (itemId) {
             case R.id.nav_home:
                 Log.d(TAG, "onNavigationItemSelected: home selected");
-
                 return true;
-
-
-
-
 
             case R.id.nav_profile:
                 Log.d(TAG, "onNavigationItemSelected: profile selected");
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-
                 return true;
 
             case R.id.nav_logout:
@@ -382,16 +347,15 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
 
             case R.id.nav_feedback:
 
-                Connection.feedback(this);
+                startActivity(new Intent(MainActivity.this, FeedBackActivity.class));
                 return true;
 
             case R.id.nav_report_bug:
-                Connection.reportBug(this);
+                startActivity(new Intent(MainActivity.this, ReportBugActivity.class));
                 return true;
 
             case R.id.nav_about_us:
-                Log.d(TAG, "onNavigationItemSelected: about us selected");
-
+                startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
                 return true;
 
             default:
