@@ -44,4 +44,16 @@
     <string name="welcome_back">welcome back</string>
     <string name="join_community">join community</string>
     <string name="google_sign_in">google sign in</string>
+    <string name="aboutus_description">
+        Our Android app is designed to showcase our skills in programming
+        and to serve as a proof-of-concept project.
+        It is a replica of the popular language-learning app, Duolingo,
+        which we have designed for educational purposes only.
+        We would like to emphasize that this project is not intended for public release,
+        and any use of the Duolingo trademark is solely for demonstrative purposes.
+        We respect the intellectual property rights of Duolingo and acknowledge that the use
+        of their trademark in our app does not imply any endorsement or affiliation with their organization.
+        We hope that our app provides a valuable learning experience
+        to its users while demonstrating our abilities in software development.
+    </string>
 </resources>

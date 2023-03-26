@@ -39,10 +39,14 @@
             android:theme="@style/AppTheme"
             android:parentActivityName=".SplashActivity"
             />
-        <activity android:name=".PictureQuestionActivity" />
-        <activity android:name=".TextQuestionActivity" />
-        <activity android:name=".SentenceQuestionActivity" />
-        <activity android:name=".TestActivity" />
+        <activity android:name=".PictureQuestionActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".TextQuestionActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".SentenceQuestionActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".TestActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".LevelsActivity" />
         <activity android:name=".ProfileActivity"
             android:theme="@style/AppTheme"
@@ -50,7 +54,12 @@
         <activity android:name=".MainActivity"
             android:theme="@style/AppTheme"
             />
-        <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".ForgotPasswordActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".AboutUsActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".FeedBackActivity"
+            android:parentActivityName=".MainActivity"/>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
