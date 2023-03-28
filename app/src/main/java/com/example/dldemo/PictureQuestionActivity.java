@@ -1,5 +1,6 @@
 package com.example.dldemo;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -54,15 +55,22 @@ public class PictureQuestionActivity extends AppCompatActivity {
 
         opt1.setOnClickListener(view -> {
             this.selectedOptionTextView = option1TextView;
+            opt1.setBackgroundColor(Color.BLUE); // set your desired color here
         });
         opt2.setOnClickListener(view -> {
             this.selectedOptionTextView = option2TextView;
+            opt2.setBackgroundColor(Color.BLUE); // set your desired color here
+
         });
         opt3.setOnClickListener(view -> {
             this.selectedOptionTextView = option3TextView;
+            opt3.setBackgroundColor(Color.BLUE); // set your desired color here
+
         });
         opt4.setOnClickListener(view -> {
             this.selectedOptionTextView = option4TextView;
+            opt4.setBackgroundColor(Color.BLUE); // set your desired color here
+
         });
 
         // Set up the logic to check the answer

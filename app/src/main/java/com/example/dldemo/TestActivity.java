@@ -86,7 +86,8 @@ public class TestActivity extends AppCompatActivity {
                         TextQuestion question = childSnapshot.getValue(TextQuestion.class);
                         textQuestions.add(question);
                     }
-                }     if (language.toLowerCase().equals("arabic")) {
+                }
+                if (language.toLowerCase().equals("arabic")) {
 
                     for (DataSnapshot childSnapshot : snapshot.child("arsentences").getChildren()) {
                         SentenceQuestion question = childSnapshot.getValue(SentenceQuestion.class);
@@ -102,7 +103,8 @@ public class TestActivity extends AppCompatActivity {
                         TextQuestion question = childSnapshot.getValue(TextQuestion.class);
                         textQuestions.add(question);
                     }
-                }     if (language.toLowerCase().equals("french")) {
+                }
+                if (language.toLowerCase().equals("french")) {
 
                     for (DataSnapshot childSnapshot : snapshot.child("frsentences").getChildren()) {
                         SentenceQuestion question = childSnapshot.getValue(SentenceQuestion.class);
@@ -119,19 +121,30 @@ public class TestActivity extends AppCompatActivity {
                         textQuestions.add(question);
                     }
                 }
+                if (language.toLowerCase().equals("german")) {
+
+                    for (DataSnapshot childSnapshot : snapshot.child("desentences").getChildren()) {
+                        SentenceQuestion question = childSnapshot.getValue(SentenceQuestion.class);
+                        sentenceQuestions.add(question);
+                    }
+
+                    for (DataSnapshot childSnapshot : snapshot.child("depictures").getChildren()) {
+                        PictureQuestion question = childSnapshot.getValue(PictureQuestion.class);
+                        pictureQuestions.add(question);
+                    }
+
+                    for (DataSnapshot childSnapshot : snapshot.child("detexts").getChildren()) {
+                        TextQuestion question = childSnapshot.getValue(TextQuestion.class);
+                        textQuestions.add(question);
+                    }
+                }
                 // Shuffle the questions and select 10 of them randomly
                 List<Question> questions = new ArrayList<>();
                 questions.addAll(sentenceQuestions);
                 questions.addAll(pictureQuestions);
                 questions.addAll(textQuestions);
                 Collections.shuffle(questions);
-                for (PictureQuestion question : pictureQuestions) {
-                    System.out.println("img url: " + question.getImage_Url());
-                    System.out.println("name: " + question.getName());
-                    for (int i = 0; i < question.getOptions().size(); i++) {
-                        System.out.println("opt: " + i + question.getOptions().get(i));
-                    }
-                }
+
 
               /*  for (SentenceQuestion question : sentenceQuestions) {
                     System.out.println("Sentence: " + question.getText());
@@ -157,13 +170,12 @@ public class TestActivity extends AppCompatActivity {
                 if (questions.size() >= 10) {
                     selectedQuestions = questions.subList(0, 10);
                 }
-               // System.out.println("ssss" + selectedQuestions);
+                // System.out.println("ssss" + selectedQuestions);
                 //System.out.println("ssssize" + selectedQuestions.size());
                 //System.out.println("qqqq" + questions.size());
 
 
                 //System.out.println("sentence" + selectedQuestions.get(2));//null
-
 
 
                 // Display the questions to the user
@@ -187,11 +199,10 @@ public class TestActivity extends AppCompatActivity {
                         SentenceQuestion sentenceQuestion = (SentenceQuestion) question;
                         Intent intent = new Intent(TestActivity.this, SentenceQuestionActivity.class);
                         intent.putExtra("sentenceQuestion", sentenceQuestion);
-                        startActivity(intent); }
+                        startActivity(intent);
+                    }
 
                 }
-
-
 
 
             }

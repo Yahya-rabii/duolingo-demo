@@ -22,8 +22,8 @@ public class FeedBackActivity extends AppCompatActivity{
         setContentView(R.layout.activity_feedback);
 
         //Firebase will be initialized here
-        feedbackEditText = findViewById(R.id.feedbackEditText);
-        submitButton = findViewById(R.id.submitButton);
+        feedbackEditText = findViewById(R.id.feedback_message);
+        submitButton = findViewById(R.id.submit_button);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override

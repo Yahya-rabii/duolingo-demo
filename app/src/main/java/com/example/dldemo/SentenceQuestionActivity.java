@@ -35,10 +35,10 @@ public class SentenceQuestionActivity extends AppCompatActivity {
             String userAnswer = mCorrectionEditText.getText().toString().toLowerCase();
             boolean isCorrect = true;
 
-            System.out.println(userAnswer +"  ===  "+mQuestion.getTranslation().toLowerCase());
+            System.out.println(userAnswer.toLowerCase() +"  ===  "+mQuestion.getTranslation().toLowerCase());
 
             TextView feedback ;
-            if (userAnswer.equals(mQuestion.getTranslation())) {
+            if (userAnswer.toLowerCase().equals(mQuestion.getTranslation().toLowerCase())) {
                 // If the answer is correct, show a message to the user
                 feedback = findViewById(R.id.selected_option_textview);
                 feedback.setText("Correct!");

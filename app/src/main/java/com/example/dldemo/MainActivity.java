@@ -351,7 +351,14 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
                 return true;
 
             case R.id.nav_report_bug:
-                startActivity(new Intent(MainActivity.this, ReportBugActivity.class));
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"rabiiyahya1@gmail.com"}); // Replace with your email address
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Bug Report");
+                intent.putExtra(Intent.EXTRA_TEXT, "Please describe the bug you encountered:");
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(Intent.createChooser(intent, "Send Email"));
+                }
                 return true;
 
             case R.id.nav_about_us:

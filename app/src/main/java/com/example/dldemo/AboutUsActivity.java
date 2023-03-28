@@ -1,16 +1,13 @@
 package com.example.dldemo;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import mehdi.sakout.aboutpage.AboutPage;
@@ -27,17 +24,15 @@ public class AboutUsActivity extends AppCompatActivity {
 
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .setImage(R.drawable.duolingo)
+                .setImage(R.drawable.aboutuslogo)
                 .setDescription(description)// or Typeface
                 .addGroup("Connect with us")
                 .addEmail("rabiiyahya1@gmail.com")
                 .addWebsite("https://yahya.rabii.me/")
                 .addFacebook("https://www.facebook.com")
                 .addTwitter("https://www.twitter.com")
-                .addYoutube("https://www.youtube.com")
-                .addPlayStore("com.ideashower.readitlater.pro")
-                .addGitHub("https://github.com/Yahya-rabii")
-                .addInstagram("https://www.instagram.com/yahya_rabii")
+                .addGitHub("Yahya-rabii")
+                .addInstagram("https://www.instagram.com/yahya____rabii/")
                 .create();
         setContentView(aboutPage);
     }

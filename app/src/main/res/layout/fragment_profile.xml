@@ -45,7 +45,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:backgroundTint="@color/teal_200"
-                app:navigationIcon="@drawable/menu_icon"
                 app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
 

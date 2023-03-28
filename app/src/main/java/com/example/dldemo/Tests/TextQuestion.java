@@ -4,7 +4,18 @@ import java.util.List;
 
 public class TextQuestion extends Question {
     private String text;
-    private List<String> errors;
+    private String name;
+    private String quote;
+
+    private List<String> options;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getText() {
         return text;
@@ -13,13 +24,20 @@ public class TextQuestion extends Question {
     public void setText(String text) {
         this.text = text;
     }
-
-    public List<String> getErrors() {
-        return errors;
+    public List<String> getOptions() {
+        return options;
     }
 
-    public void setErrors(List<String> errors) {
-        this.errors = errors;
+    public String getQuote() {
+        return quote;
+    }
+
+    public void setQuote(String quote) {
+        this.quote = quote;
+    }
+
+    public void setOptions(List<String> options) {
+        this.options = options;
     }
 }
 

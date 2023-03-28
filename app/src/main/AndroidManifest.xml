@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACTION_OPEN_DOCUMENT"
-         />
+        />
 
     <application
         android:allowBackup="true"
@@ -40,12 +40,19 @@
             android:parentActivityName=".SplashActivity"
             />
         <activity android:name=".PictureQuestionActivity"
+            android:theme="@style/AppTheme"
+
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".TextQuestionActivity"
+            android:theme="@style/AppTheme"
+
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".SentenceQuestionActivity"
+            android:theme="@style/AppTheme"
+
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".TestActivity"
+            android:theme="@style/AppTheme"
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".LevelsActivity" />
         <activity android:name=".ProfileActivity"
@@ -57,8 +64,10 @@
         <activity android:name=".ForgotPasswordActivity"
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".AboutUsActivity"
+            android:theme="@style/AppTheme"
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".FeedBackActivity"
+            android:theme="@style/AppTheme"
             android:parentActivityName=".MainActivity"/>
 
         <meta-data

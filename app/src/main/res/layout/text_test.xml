@@ -4,40 +4,106 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/title_textview"
+        android:id="@+id/title_texttview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Find the Errors and write them with this sepataor -"
+        android:text="translate this text "
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textview_with_errors"
+        android:id="@+id/question_texttview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title_textview"
-        android:layout_marginTop="32dp"
-        android:text="@string/this_text_has_some_errors" />
-
-    <EditText
-        android:id="@+id/correction_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textview_with_errors"
-        android:layout_marginTop="32dp"
-        android:hint="@string/enter_your_correction_here"
-        android:inputType="text"
-        android:minHeight="48dp"
+        android:layout_height="126dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginBottom="19dp"
+        android:padding="16dp"
+        android:text="What is the name of the object in the picture?"
         android:textColor="@color/teal_200"
-        android:textColorHint="#757575" />
+        android:textSize="20sp" />
 
+    <LinearLayout
+        android:id="@+id/options_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/question_texttview"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+
+
+        <TextView
+            android:id="@+id/option1_texttview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:onClick="optfunc"
+            android:text="@string/option_1"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+
+
+
+
+        <TextView
+            android:id="@+id/option2_texttview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/option_2"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/option3_texttview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/option_3"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/option4_texttview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/option_4"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/selected_option_textview"
+        android:id="@+id/selected_option_texttview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/correction_edittext"
-        android:layout_marginTop="77dp"
+        android:layout_above="@+id/options_layout"
+        android:layout_below="@+id/options_layout"
+        android:layout_marginTop="-167dp"
         android:layout_marginBottom="13dp"
         android:padding="16dp"
         android:text=""
@@ -46,15 +112,14 @@
 
     <Button
         android:id="@+id/submit_button"
-        android:layout_width="139dp"
-        android:layout_height="78dp"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="587dp"
-        android:layout_marginEnd="132dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginStart="122dp"
+        android:layout_marginEnd="118dp"
+        android:layout_marginBottom="191dp"
         android:background="@drawable/button_bg"
         android:onClick="onSubmitButtonClick"
         android:padding="12dp"
