@@ -46,7 +46,6 @@ public class ScoreView extends View {
     protected void onDraw(Canvas canvas) {
         if (currentScore == 0) {
 
-
             View parentView = (View) getParent();
             TextView scoreTextView = parentView.findViewById(R.id.scoreper);
             scoreTextView.setText("  ");
@@ -80,7 +79,7 @@ public class ScoreView extends View {
             Button tryAgainButton = parentView.findViewById(R.id.try_again_button);
             tryAgainButton.setVisibility(View.VISIBLE);
             TextView scoreTextView = parentView.findViewById(R.id.scoreper);
-            scoreTextView.setText(" you get only  =" + currentScore + " %");
+            scoreTextView.setText("Try again, you have " + currentScore + " %");
         } else {
 
             super.onDraw(canvas);
@@ -105,7 +104,7 @@ public class ScoreView extends View {
 
             View parentView = (View) getParent();
             TextView scoreTextView = parentView.findViewById(R.id.scoreper);
-            scoreTextView.setText(" good !!! you get  =" + currentScore + " %");
+            scoreTextView.setText("good job! you get " + currentScore + " %");
         }
     }
 

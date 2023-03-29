@@ -123,11 +123,6 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
                         Log.d(TAG, "onCancelled: " + error.getMessage());
                     }
                 });
-
-
-
-
-
             }
 
             profileEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
@@ -145,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
                         FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(MainActivity.this, "Verification email sent successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Email verification sent successfully", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
