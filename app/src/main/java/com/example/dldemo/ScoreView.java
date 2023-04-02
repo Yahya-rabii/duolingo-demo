@@ -82,11 +82,8 @@ public class ScoreView extends View {
             Button tryAgainButton = parentView.findViewById(R.id.try_again_button);
             tryAgainButton.setVisibility(View.VISIBLE);
             TextView scoreTextView = parentView.findViewById(R.id.scoreper);
-<<<<<<< HEAD
             scoreTextView.setText(currentScore + " %");
-=======
             scoreTextView.setText("Try again, you have " + currentScore + " %");
->>>>>>> 8221086133b3c8e08bfa8888eb7d3340a4512f79
         } else {
 
             super.onDraw(canvas);
@@ -111,11 +108,8 @@ public class ScoreView extends View {
 
             View parentView = (View) getParent();
             TextView scoreTextView = parentView.findViewById(R.id.scoreper);
-<<<<<<< HEAD
             scoreTextView.setText(" good job !!! " + currentScore + " %");
-=======
             scoreTextView.setText("good job! you get " + currentScore + " %");
->>>>>>> 8221086133b3c8e08bfa8888eb7d3340a4512f79
         }
     }
 

@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
         checkConnection(LoginActivity.this);
     }
 
-    @SuppressLint("CutPasteId")
+    @SuppressLint({"CutPasteId", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,7 +116,24 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+        findViewById(R.id.BackArrow).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: creating shared animation on create account button clicked");
+                Pair[] pairs = new Pair[6];
+                pairs[0] = new Pair<>(findViewById(R.id.loginScreenWelcomeBack), "welcome_transition");
+                pairs[1] = new Pair<>(findViewById(R.id.loginScreenCreateAccountButton), "create_account_transition");
+                pairs[2] = new Pair<>(findViewById(R.id.loginScreenLoginButton), "login_transition");
+                pairs[3] = new Pair<>(findViewById(R.id.loginScreenEmailTextInput), "email_transition");
+                pairs[4] = new Pair<>(findViewById(R.id.loginScreenPasswordTextInput), "password_transition");
+                pairs[5] = new Pair<>(findViewById(R.id.loginScreenBackgroundRectangle), "bgrect_transition");
 
+                ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, pairs);
+
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class), activityOptions.toBundle());
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
 
 
         // Configure Google Sign In

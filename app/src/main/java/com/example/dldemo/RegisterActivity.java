@@ -233,7 +233,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: terms and conditions pressed");
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(" ./todo "));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://drive.google.com/file/d/1CVgIS85rbxZai2g9a3GFKu98I1ZLGQ-U/view?usp=share_link"));
                 startActivity(Intent.createChooser(browserIntent, "Select the app to open the link"));
             }
         });

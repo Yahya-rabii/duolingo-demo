@@ -35,11 +35,12 @@
             <TextView
                 android:id="@+id/createAccountWelcomeText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="51dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="19dp"
+                android:layout_marginBottom="18dp"
                 android:layout_toRightOf="@id/createAccountBackArrow"
-                android:text="Welcome"
+                android:text="Login Here"
                 android:textColor="@color/white"
                 android:textSize="@dimen/extraLargeText"
                 android:textStyle="bold"
@@ -48,15 +49,15 @@
 
             <ImageView
                 android:id="@+id/loginScreenAppLogo"
-                android:layout_width="62dp"
-                android:layout_height="61dp"
+                android:layout_width="wrap_content"
+                android:layout_height="57dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="85dp"
-                android:layout_marginTop="-2dp"
-                android:layout_marginEnd="76dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginStart="138dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="19dp"
+                android:layout_marginBottom="2dp"
                 android:layout_toEndOf="@+id/createAccountWelcomeText"
                 android:src="@drawable/duolingo"
                 tools:ignore="MissingConstraints" />
@@ -118,8 +119,8 @@
 
         <ImageView
             android:id="@+id/createAccountScreenBackgroundRectangle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="411dp"
+            android:layout_height="780dp"
             android:layout_marginTop="@dimen/createAccountScreenBackgroundRectangleTopMargin"
             android:background="@drawable/background_rectangle_corners"
             android:contentDescription="@string/create_account"
@@ -128,6 +129,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <!--        TextView Welcome Back-->
 
         <ProgressBar
             android:id="@+id/createAccountScreenProgressBar"
@@ -139,11 +142,9 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!--        TextView Welcome Back-->
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.937" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/createAccountScreenFullNameTextInput"

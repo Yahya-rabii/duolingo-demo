@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:background="@drawable/bckg">
 
     <TextView
         android:id="@+id/title_dialog"
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="logout"
-        android:textColor="@color/teal_200"
+        android:textColor="@color/black"
         android:textSize="28sp" />
 
     <TextView
@@ -38,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/teal_700"
+            android:background="@drawable/button_bg"
             android:text="no"
             android:textColor="#FFFFFF" />
 
@@ -48,6 +50,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/teal_200"
             android:text="yes"
+            android:background="@drawable/button_bg"
             android:textColor="#FFFFFF" />
 
     </LinearLayout>
