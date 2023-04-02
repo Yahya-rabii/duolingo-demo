@@ -62,17 +62,7 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
     public NavOptions.Builder leftToRightBuilder, rightToLeftBuilder;
     private NavigationView mNavigationView;
     FirebaseAuth mAuth;
-    @Override
-    public void onBackPressed() {
-        Log.d(TAG, "onBackPressed: back pressed");
-        if (mDrawerLayout.isDrawerVisible(GravityCompat.START)) {
-            Log.d(TAG, "onBackPressed: closing drawer");
-            mDrawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            Log.d(TAG, "onBackPressed: navigating to home");
-            super.onBackPressed();
-        }
-    }
+
 
     @Override
     protected void onResume() {
@@ -279,14 +269,11 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
     }
     @Override
     public void onItemClick(LangModel langModel) {
-        Intent intent = new Intent(MainActivity.this, TestActivity.class);
+        Intent intent = new Intent(MainActivity.this, LevelsActivity.class);
         intent.putExtra("LangModel", langModel);
         intent.putExtra("Language", langModel.getName());
         startActivity(intent);
     }
-
-
-
 
 
 
@@ -392,6 +379,19 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
     }
 
 
+    @Override
+    public void onBackPressed() {
+        Log.d(TAG, "onBackPressed: back pressed");
+        if (mDrawerLayout.isDrawerVisible(GravityCompat.START)) {
+            Log.d(TAG, "onBackPressed: closing drawer");
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+
+        } else {
+            Log.d(TAG, "onBackPressed: navigating to home");
+            super.onBackPressed();            finish();
+
+        }
+    }
 
 
 

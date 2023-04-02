@@ -14,9 +14,12 @@ import android.widget.TextView;
 public class ScoreView extends View {
     private int maxScore;
     static int currentScore;
+
     private Paint backgroundPaint;
     private Paint borderPaint;
     private Paint scorePaint;
+    static int tries = 0;
+    static int protries = 0;
 
     public ScoreView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -80,7 +83,7 @@ public class ScoreView extends View {
             Button tryAgainButton = parentView.findViewById(R.id.try_again_button);
             tryAgainButton.setVisibility(View.VISIBLE);
             TextView scoreTextView = parentView.findViewById(R.id.scoreper);
-            scoreTextView.setText(" you get only  =" + currentScore + " %");
+            scoreTextView.setText(currentScore + " %");
         } else {
 
             super.onDraw(canvas);
@@ -105,7 +108,7 @@ public class ScoreView extends View {
 
             View parentView = (View) getParent();
             TextView scoreTextView = parentView.findViewById(R.id.scoreper);
-            scoreTextView.setText(" good !!! you get  =" + currentScore + " %");
+            scoreTextView.setText(" good job !!! " + currentScore + " %");
         }
     }
 
@@ -116,5 +119,9 @@ public class ScoreView extends View {
 
     public static void resetScore() {
         currentScore = 0;
+    }
+    public static void resettries() {
+        tries = 0;
+        protries = 0;
     }
 }

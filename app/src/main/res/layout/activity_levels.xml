@@ -1,84 +1,112 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LevelsActivity">
+    android:background="@color/teal_200"
+    tools:context=".LoginActivity">
 
 
     <ImageView
-        android:id="@+id/illustration"
-        android:layout_width="238dp"
-        android:layout_height="192dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="95dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="78dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/pngeggg" />
+        android:id="@+id/loginScreenBackgroundRectangle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/loginScreenBackgroundRectangleTopMargin"
+        android:background="@drawable/background_rectangle_corners"
+        android:contentDescription="@string/login_screen_bg_rectangle_cd"
+        android:transitionName="bgrect_transition"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="281dp"
-        android:layout_height="53dp"
-        android:layout_below="@+id/illustration"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="423dp"
-        android:text="@string/choose_your_level"
-        android:textColor="@color/teal_200"
-        android:textSize="32sp"
-        android:textStyle="bold" />
-
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/buttons_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="64dp"
         android:layout_marginBottom="87dp"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/beginner_button"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/button_bg"
-            android:onClick="onBeginnerClick"
-            android:text="Beginner"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/intermediate_button"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/button_bg"
-            android:onClick="onIntermediateClick"
-            android:text="Intermediate"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/advanced_button"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:background="@drawable/button_bg"
-            android:onClick="onAdvancedClick"
-            android:text="@string/advanced"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
-
-    </LinearLayout>
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
 
 
-</RelativeLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/illustration"
+        android:layout_width="238dp"
+        android:layout_height="192dp"
+        android:layout_marginTop="52dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pngeggg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/loginScreenBackgroundRectangle" />
+
+    <Button
+        android:id="@+id/advanced_button"
+        android:layout_width="217dp"
+        android:layout_height="79dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/button_bg"
+        android:onClick="onAdvancedClick"
+        android:text="@string/advanced"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.919"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/intermediate_button"
+        android:layout_width="204dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_bg"
+        android:onClick="onIntermediateClick"
+        android:text="Intermediate"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/advanced_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/beginner_button"
+        android:layout_width="214dp"
+        android:layout_height="85dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/button_bg"
+        android:onClick="onBeginnerClick"
+        android:text="Beginner"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/intermediate_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="280dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/choose_your_level"
+        android:textColor="@color/teal_200"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/beginner_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/illustration" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

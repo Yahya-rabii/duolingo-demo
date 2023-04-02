@@ -1,13 +1,17 @@
 package com.example.dldemo;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dldemo.Tests.TextQuestion;
+
+import java.util.Objects;
 
 public class TextQuestionActivity extends AppCompatActivity {
 
@@ -17,6 +21,7 @@ public class TextQuestionActivity extends AppCompatActivity {
     private TextView selectedOptionTextView;
     private String selectedOption;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,9 +29,6 @@ public class TextQuestionActivity extends AppCompatActivity {
 
         // Get the question data from the intent
         mQuestion = (TextQuestion) getIntent().getSerializableExtra("textQuestion");
-
-
-
 
         // Set the question text
         TextView questionTextView = findViewById(R.id.question_texttview);
@@ -76,42 +78,135 @@ public class TextQuestionActivity extends AppCompatActivity {
         // Set up the logic to check the answer
         Button submitButton = findViewById(R.id.submit_button);
         submitButton.setOnClickListener(view -> {
-            if (!mAnsweredCorrectly) {
-                // Check if the selected answer is correct
-                if (selectedOptionTextView != null) {
-
-                    this.selectedOption = selectedOptionTextView.getText().toString();
-
-                    TextView feedbackTextView = findViewById(R.id.selected_option_texttview);
-                    feedbackTextView.setText(this.selectedOption);
-                }
-
-                else this.selectedOption = "rien";
+            // Check if the selected answer is correct
+            String level = getIntent().getStringExtra("level");
 
 
+            if (selectedOptionTextView != null) {
 
-                System.out.println(selectedOptionTextView);
+                this.selectedOption = selectedOptionTextView.getText().toString();
+
                 TextView feedbackTextView = findViewById(R.id.selected_option_texttview);
-                feedbackTextView.setText(selectedOption);
+                feedbackTextView.setText(this.selectedOption);
+
+            } else this.selectedOption = "rien";
 
 
-                if (selectedOption.equals(mQuestion.getName())) {
-                    // If the selected answer is correct, set the flag and show a message
-                    mAnsweredCorrectly = true;
-                    feedbackTextView = findViewById(R.id.selected_option_texttview);
-                    feedbackTextView.setText("Correct!");
-                    ScoreView scoreView = findViewById(R.id.scoreView);
-                    ScoreView.incrementScore();
-                    finish();
+            TextView feedbackTextView;
+            System.out.println("heeeeeeeeeeeeeeeeeeeeeeeeyyyy");
 
-                } else {
-                    feedbackTextView = findViewById(R.id.selected_option_texttview);
-                    feedbackTextView.setText("Incorrect. The correct answer is: " + mQuestion.getName());
-                    finish();
+            if (ScoreView.protries >= 1 || ScoreView.tries >= 3) {
+                Toast.makeText(this, "you did not passed please try later", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(TextQuestionActivity.this, MainActivity.class);
+                ScoreView.tries = 0;
+                ScoreView.protries = 0;
+                startActivity(intent);
+                finish();
+            } else {
+
+
+
+                System.out.println(level);
+                if (Objects.equals(level, "beginner")) {
+
+                    System.out.println(selectedOption + "===" + mQuestion.getName().toLowerCase());
+                    if (selectedOption.equals(mQuestion.getName().toLowerCase())) {
+                        // If the answer is correct, show a message to the user
+                        feedbackTextView = findViewById(R.id.selected_option_texttview);
+                        feedbackTextView.setText("Correct!");
+                        ScoreView scoreView = findViewById(R.id.scoreView);
+                        ScoreView.incrementScore();
+                        tracking.currentIntent += 1;
+
+                        if (tracking.currentIntent < tracking.intents.size()){
+                            startActivity(tracking.intents.get(tracking.currentIntent));
+                        }
+                        finish();
+
+                    } else {
+                        // If the answer is incorrect, show a message to the user and allow them to try again
+                        feedbackTextView = findViewById(R.id.selected_option_texttview);
+                        feedbackTextView.setText("Incorrect!");
+                        tracking.currentIntent += 1;
+
+                        if (tracking.currentIntent < tracking.intents.size()){
+                            startActivity(tracking.intents.get(tracking.currentIntent));
+                        }
+                        finish();
+                    }
+
+                } else if (Objects.equals(level, "intermediate")) {
+
+
+                    if (selectedOption.equals(mQuestion.getName())) {
+                        // If the selected answer is correct, set the flag and show a message
+                        mAnsweredCorrectly = true;
+                        feedbackTextView = findViewById(R.id.selected_option_texttview);
+                        feedbackTextView.setText("Correct!");
+                        ScoreView scoreView = findViewById(R.id.scoreView);
+                        ScoreView.incrementScore();
+                        tracking.currentIntent += 1;
+
+                        if (tracking.currentIntent < tracking.intents.size()){
+                            startActivity(tracking.intents.get(tracking.currentIntent));
+                        }
+                        finish();
+
+                    } else {
+                        feedbackTextView = findViewById(R.id.selected_option_texttview);
+                        feedbackTextView.setText("Incorrect. The correct answer is: " + mQuestion.getName());
+                        ScoreView.tries++;
+                        tracking.currentIntent += 1;
+
+                        if (tracking.currentIntent < tracking.intents.size()){
+                            startActivity(tracking.intents.get(tracking.currentIntent));
+                        }
+                        finish();
+                    }
+
+                } else if (Objects.equals(level, "advanced")) {
+
+
+                    if (selectedOption.equals(mQuestion.getName())) {
+                        // If the selected answer is correct, set the flag and show a message
+                        mAnsweredCorrectly = true;
+                        feedbackTextView = findViewById(R.id.selected_option_texttview);
+                        feedbackTextView.setText("Correct!");
+                        ScoreView scoreView = findViewById(R.id.scoreView);
+                        ScoreView.incrementScore();
+                        tracking.currentIntent += 1;
+
+                        if (tracking.currentIntent < tracking.intents.size()){
+                            startActivity(tracking.intents.get(tracking.currentIntent));
+                        }
+                        finish();
+
+                    } else {
+                        feedbackTextView = findViewById(R.id.selected_option_texttview);
+                        feedbackTextView.setText("Incorrect. The correct answer is: " + mQuestion.getName());
+                        ScoreView.protries++;
+                        tracking.currentIntent += 1;
+
+                        if (tracking.currentIntent < tracking.intents.size()){
+                            startActivity(tracking.intents.get(tracking.currentIntent));
+                        }
+                        finish();
+                    }
+
                 }
 
             }
+
+
         });
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish(); // Optional, if you want to close the current activity
     }
 }
 

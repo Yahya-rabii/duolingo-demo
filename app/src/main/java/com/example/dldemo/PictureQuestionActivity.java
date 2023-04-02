@@ -1,15 +1,19 @@
 package com.example.dldemo;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dldemo.Tests.PictureQuestion;
 import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 public class PictureQuestionActivity extends AppCompatActivity {
 
@@ -18,6 +22,7 @@ public class PictureQuestionActivity extends AppCompatActivity {
     private boolean mAnsweredCorrectly = false;
     private TextView selectedOptionTextView;
     private String selectedOption;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +34,13 @@ public class PictureQuestionActivity extends AppCompatActivity {
 
         // Set the image
         ImageView imageView = findViewById(R.id.picture_imageview);
-        System.out.println("hahouwa"+mQuestion.getImage_Url());
+        System.out.println("hahouwa" + mQuestion.getImage_Url());
         Picasso.get().load(mQuestion.getImage_Url()).into(imageView);
+
+
+        String level = getIntent().getStringExtra("level");
+        String language = getIntent().getStringExtra("Language");
+
 
         // Set the question text
         TextView questionTextView = findViewById(R.id.question_textview);
@@ -84,10 +94,7 @@ public class PictureQuestionActivity extends AppCompatActivity {
 
                     TextView feedbackTextView = findViewById(R.id.selected_option_textview);
                     feedbackTextView.setText(this.selectedOption);
-                }
-
-                else this.selectedOption = "rien";
-
+                } else this.selectedOption = "rien";
 
 
                 System.out.println(selectedOptionTextView);
@@ -95,22 +102,125 @@ public class PictureQuestionActivity extends AppCompatActivity {
                 feedbackTextView.setText(selectedOption);
 
 
-                if (selectedOption.equals(mQuestion.getName())) {
-                    // If the selected answer is correct, set the flag and show a message
-                    mAnsweredCorrectly = true;
-                    feedbackTextView = findViewById(R.id.selected_option_textview);
-                    feedbackTextView.setText("Correct!");
-                    ScoreView scoreView = findViewById(R.id.scoreView);
-                    ScoreView.incrementScore();
+                if (ScoreView.protries >= 1 || ScoreView.tries >= 3) {
+                    Toast.makeText(this, "you did not passed please try later", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(PictureQuestionActivity.this, MainActivity.class);
+                    ScoreView.tries = 0;
+                    ScoreView.protries = 0;
+                    startActivity(intent);
                     finish();
 
                 } else {
-                    feedbackTextView = findViewById(R.id.selected_option_textview);
-                    feedbackTextView.setText("Incorrect. The correct answer is: " + mQuestion.getName());
-                    finish();
+
+
+                    if (Objects.equals(level, "beginner")) {
+
+
+                        if (selectedOption.equals(mQuestion.getName())) {
+                            // If the selected answer is correct, set the flag and show a message
+                            mAnsweredCorrectly = true;
+                            feedbackTextView = findViewById(R.id.selected_option_textview);
+                            feedbackTextView.setText("Correct!");
+                            ScoreView scoreView = findViewById(R.id.scoreView);
+                            ScoreView.incrementScore();
+                            tracking.currentIntent += 1;
+
+                            if (tracking.currentIntent < tracking.intents.size()) {
+                                startActivity(tracking.intents.get(tracking.currentIntent));
+                            }
+                            finish();
+
+                        } else {
+                            feedbackTextView = findViewById(R.id.selected_option_textview);
+                            feedbackTextView.setText("Incorrect. The correct answer is: " + mQuestion.getName());
+                            tracking.currentIntent += 1;
+
+                            if (tracking.currentIntent < tracking.intents.size()) {
+                                startActivity(tracking.intents.get(tracking.currentIntent));
+                            }
+                            finish();
+                        }
+
+                    } else if (Objects.equals(level, "intermediate")) {
+
+
+                        if (selectedOption.equals(mQuestion.getName())) {
+                            // If the selected answer is correct, set the flag and show a message
+                            mAnsweredCorrectly = true;
+                            feedbackTextView = findViewById(R.id.selected_option_textview);
+                            feedbackTextView.setText("Correct!");
+                            ScoreView scoreView = findViewById(R.id.scoreView);
+                            ScoreView.incrementScore();
+                            tracking.currentIntent += 1;
+
+                            if (tracking.currentIntent < tracking.intents.size()) {
+                                startActivity(tracking.intents.get(tracking.currentIntent));
+                            }
+                            finish();
+
+                        } else {
+                            feedbackTextView = findViewById(R.id.selected_option_textview);
+                            feedbackTextView.setText("Incorrect. The correct answer is: " + mQuestion.getName());
+                            ScoreView.tries++;
+                            tracking.currentIntent += 1;
+
+                            if (tracking.currentIntent < tracking.intents.size()) {
+                                startActivity(tracking.intents.get(tracking.currentIntent));
+                            }
+
+                            finish();
+                        }
+
+                    } else if (Objects.equals(level, "advanced")) {
+
+
+                        if (selectedOption.equals(mQuestion.getName())) {
+                            // If the selected answer is correct, set the flag and show a message
+                            mAnsweredCorrectly = true;
+                            feedbackTextView = findViewById(R.id.selected_option_textview);
+                            feedbackTextView.setText("Correct!");
+                            ScoreView scoreView = findViewById(R.id.scoreView);
+                            ScoreView.incrementScore();
+                            tracking.currentIntent += 1;
+
+                            if (tracking.currentIntent < tracking.intents.size()) {
+                                startActivity(tracking.intents.get(tracking.currentIntent));
+                            }
+                            finish();
+
+                        } else {
+                            feedbackTextView = findViewById(R.id.selected_option_textview);
+                            feedbackTextView.setText("Incorrect. The correct answer is: " + mQuestion.getName());
+                            ScoreView.protries++;
+                            tracking.currentIntent += 1;
+
+                            if (tracking.currentIntent < tracking.intents.size()) {
+                                startActivity(tracking.intents.get(tracking.currentIntent));
+                            }
+                            finish();
+                        }
+
+                    }
+
                 }
+
 
             }
         });
     }
+
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        ScoreView.protries = 0;
+        ScoreView.tries = 0;
+        tracking.intents.clear();
+        tracking.currentIntent = 0;
+        startActivity(intent);
+
+        finish(); // Optional, if you want to close the current activity
+    }
+
+
 }
