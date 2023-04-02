@@ -33,6 +33,7 @@ public class AboutUsActivity extends AppCompatActivity {
                 .addTwitter("https://www.twitter.com")
                 .addGitHub("Yahya-rabii")
                 .addInstagram("https://www.instagram.com/yahya____rabii/")
+                .addItem(createCopyright())
                 .create();
         setContentView(aboutPage);
     }
@@ -40,7 +41,7 @@ public class AboutUsActivity extends AppCompatActivity {
         Element copyright = new Element();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
         final String currentYear = dateFormat.format(new Date());
-        final String copyrightString = String.format("Copyright by Noxidious and Matrixcsyounes %s", currentYear);
+        final String copyrightString = String.format("Copyright by Noxidious and MatrixcsYounes © %s ", currentYear);
         copyright.setTitle(copyrightString);
         copyright.setGravity(Gravity.CENTER);
         return copyright;

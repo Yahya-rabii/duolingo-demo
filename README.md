@@ -1,6 +1,6 @@
 # Duolingo Clone - Android App
 
-## A Duolingua clone Android application that allows users to learn Arabic, French, English and Spanish languages. The app provides an easy-to-use interface, authentic pronunciation, and interactive activities to keep users engaged in the learning process.
+## A Duolingo clone Android application that allows users to learn Arabic, French, English and German languages. The app provides an easy-to-use interface, authentic pronunciation, and interactive activities to keep users engaged in the learning process.
 
 This app is built using Android Studio and uses Firebase for authentication and storing user scores in a real-time database.
 Features
