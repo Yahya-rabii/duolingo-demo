@@ -1,5 +1,6 @@
 package com.example.dldemo;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -22,7 +23,9 @@ import java.util.Map;
 public class DashboardActivity extends AppCompatActivity {
 
     private TextView scoreTextView;
+    private TextView dash;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,16 +33,19 @@ public class DashboardActivity extends AppCompatActivity {
 
         // Initialize views
         scoreTextView = findViewById(R.id.scoreTextView);
+        dash = findViewById(R.id.dash);
 
         // Get the ID of the current user
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+
         if (currentUser == null) {
             // User is not logged in
             // Handle this case as appropriate
             return;
         }
         String userId = currentUser.getUid();
-
+        dash.setText(currentUser.getEmail());
         // Create a Firebase reference to the user's scores node
         DatabaseReference userScoresRef = FirebaseDatabase.getInstance().getReference("users").child(userId).child("scores");
 
@@ -61,7 +67,7 @@ public class DashboardActivity extends AppCompatActivity {
                     String language = (String) scoreData.get("language");
                     String level = (String) scoreData.get("level");
                     int score = ((Long) scoreData.get("score")).intValue();
-                    long time = (Long) scoreData.get("time");
+                    String time = (String) scoreData.get("time");
 
                     scoreTextBuilder.append("Language: ").append(language).append("\n")
                             .append("Level: ").append(level).append("\n")

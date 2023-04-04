@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -135,13 +137,22 @@ public class ScoreView extends View {
 // Create a Firebase reference to the user's scores node
             DatabaseReference userScoresRef = FirebaseDatabase.getInstance().getReference("users").child(userId).child("scores");
 
-// Get the current time in milliseconds
-            long currentTime = System.currentTimeMillis();
+// Get the current time
+            LocalDateTime currentTime = LocalDateTime.now();
+
+            // Define the desired date-time format
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd--HH:mm:ss");
+
+            // Format the current time using the defined format
+            String formattedTime = currentTime.format(formatter);
+
+            // Print the formatted time
+            System.out.println(formattedTime);
 
 // Create a map to hold the new score data
             Map<String, Object> newScoreData = new HashMap<>();
             newScoreData.put("score", currentScore);
-            newScoreData.put("time", currentTime);
+            newScoreData.put("time", formattedTime);
             newScoreData.put("level", LevelsActivity.lev);
             newScoreData.put("language", LevelsActivity.lang);
 

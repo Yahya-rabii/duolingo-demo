@@ -7,28 +7,40 @@
     android:background="@color/teal_200"
     tools:context=".LoginActivity">
 
-    <com.google.android.material.appbar.MaterialToolbar
+
+    <LinearLayout
         android:id="@+id/toolbar"
-        style="@style/BaseActivityToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_width="299dp"
+        android:layout_height="34dp"
         android:backgroundTint="@color/teal_200"
+        app:layout_constraintBottom_toTopOf="@+id/loginScreenBackgroundRectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:popupTheme="@style/AppTheme.PopupOverlay"
-        tools:ignore="MissingConstraints"
-        >
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:text="Hello  "
             android:textColor="@color/white"
-            android:text="Dashboard"
-
-            android:textSize="50dp"
+            android:textSize="20dp"
 
             />
 
-    </com.google.android.material.appbar.MaterialToolbar>
+        <TextView
+            android:id="@+id/dash"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Dashboard"
+            android:textColor="@color/white"
+            android:textSize="20dp"
 
+            />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/loginScreenBackgroundRectangle"
