@@ -64,8 +64,8 @@ public class TestActivity extends AppCompatActivity {
 
         String language = getIntent().getStringExtra("Language");
         String level = getIntent().getStringExtra("level");
-        System.out.println("dfdfdfdffdfdfdfdfdfdf " + language);
-        System.out.println("dfdfdfdffdfdfdfdfdfdf " + level);
+        System.out.println("dfdfdfdffdfdfdfdfdfdf " + ScoreView.currentScore);
+       // System.out.println("dfdfdfdffdfdfdfdfdfdf " + level);
 
 
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -199,6 +199,7 @@ public class TestActivity extends AppCompatActivity {
                 }
                 tracking.currentIntent = 0;
                 startActivity(tracking.intents.get(0));
+
             }
 
 // todo i want to implement the functions in order  to display every  type of question to the user (every type of qquestion in a different layout)

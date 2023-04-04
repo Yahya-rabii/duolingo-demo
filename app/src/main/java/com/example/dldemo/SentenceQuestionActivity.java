@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,9 +30,10 @@ public class SentenceQuestionActivity extends AppCompatActivity {
         // Set the question text
         TextView questionTextView = findViewById(R.id.sentence_textview);
         questionTextView.setText(mQuestion.getText());
-
+        SeekBar seekBar = findViewById(R.id.seekBar);
         // Set up the answer EditText
         mCorrectionEditText = findViewById(R.id.translation_edittext);
+        seekBar.setProgress(InstentScore.score);
 
         // Set up the logic to check the answer
         Button submitButton = findViewById(R.id.submit_button);
@@ -71,6 +73,9 @@ public class SentenceQuestionActivity extends AppCompatActivity {
                         ScoreView.incrementScore();
                         tracking.currentIntent += 1;
 
+                        // Update the SeekBar and text view
+                        InstentScore.incrementsc();
+
                         if (tracking.currentIntent < tracking.intents.size()){
                             startActivity(tracking.intents.get(tracking.currentIntent));
                         }
@@ -99,6 +104,9 @@ public class SentenceQuestionActivity extends AppCompatActivity {
                         ScoreView.incrementScore();
                         tracking.currentIntent += 1;
 
+
+                        // Update the SeekBar and text view
+                        InstentScore.incrementsc();
                         if (tracking.currentIntent < tracking.intents.size()){
                             startActivity(tracking.intents.get(tracking.currentIntent));
                         }
@@ -127,6 +135,10 @@ public class SentenceQuestionActivity extends AppCompatActivity {
                         ScoreView scoreView = findViewById(R.id.scoreView);
                         ScoreView.incrementScore();
                         tracking.currentIntent += 1;
+
+                        // Update the SeekBar and text view
+                        InstentScore.incrementsc();
+
 
                         if (tracking.currentIntent < tracking.intents.size()){
                             startActivity(tracking.intents.get(tracking.currentIntent));
@@ -159,6 +171,7 @@ public class SentenceQuestionActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        InstentScore.resetsc();
         finish(); // Optional, if you want to close the current activity
     }
 }

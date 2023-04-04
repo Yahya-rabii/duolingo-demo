@@ -9,6 +9,10 @@ import android.widget.Button;
 
 public class LevelsActivity extends Activity {
 
+
+    static String lang;
+    static String lev;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,21 +21,20 @@ public class LevelsActivity extends Activity {
         Button beginnerBtn = findViewById(R.id.beginner_button);
         Button intermediateBtn = findViewById(R.id.intermediate_button);
         Button advancedBtn = findViewById(R.id.advanced_button);
-
-
         String language = getIntent().getStringExtra("Language");
+        lang = language;
+
         beginnerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LevelsActivity.this, TestActivity.class);
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LevelsActivity.this, beginnerBtn, "beginner_transition");
                 startActivity(intent, options.toBundle());
-
+                InstentScore.resetsc();
                 intent.putExtra("Language", language);
                 intent.putExtra("level", "beginner");
+                lev ="beginner";
                 startActivity(intent);
-
-
 
 
             }
@@ -42,9 +45,12 @@ public class LevelsActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(LevelsActivity.this, TestActivity.class);
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LevelsActivity.this, intermediateBtn, "intermediate_transition");
+                InstentScore.resetsc();
                 intent.putExtra("Language", language);
                 intent.putExtra("level", "intermediate");
-                startActivity(intent, options.toBundle());           }
+                lev ="intermediate";
+                startActivity(intent, options.toBundle());
+            }
         });
 
         advancedBtn.setOnClickListener(new View.OnClickListener() {
@@ -52,9 +58,12 @@ public class LevelsActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(LevelsActivity.this, TestActivity.class);
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LevelsActivity.this, advancedBtn, "advanced_transition");
+                InstentScore.resetsc();
                 intent.putExtra("Language", language);
                 intent.putExtra("level", "advanced");
-                startActivity(intent, options.toBundle());         }
+                lev ="advanced";
+                startActivity(intent, options.toBundle());
+            }
         });
     }
 }

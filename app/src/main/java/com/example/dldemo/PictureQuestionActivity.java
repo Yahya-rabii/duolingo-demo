@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,6 +62,10 @@ public class PictureQuestionActivity extends AppCompatActivity {
         TextView opt2 = findViewById(R.id.option2_textview);
         TextView opt3 = findViewById(R.id.option3_textview);
         TextView opt4 = findViewById(R.id.option4_textview);
+
+
+        SeekBar seekBar = findViewById(R.id.seekBar);
+        seekBar.setProgress(InstentScore.score);
 
 
         opt1.setOnClickListener(view -> {
@@ -125,6 +130,11 @@ public class PictureQuestionActivity extends AppCompatActivity {
                             ScoreView.incrementScore();
                             tracking.currentIntent += 1;
 
+
+// Update the SeekBar and text view
+                            InstentScore.incrementsc();
+
+
                             if (tracking.currentIntent < tracking.intents.size()) {
                                 startActivity(tracking.intents.get(tracking.currentIntent));
                             }
@@ -152,6 +162,9 @@ public class PictureQuestionActivity extends AppCompatActivity {
                             ScoreView scoreView = findViewById(R.id.scoreView);
                             ScoreView.incrementScore();
                             tracking.currentIntent += 1;
+
+                            // Update the SeekBar and text view
+                            InstentScore.incrementsc();
 
                             if (tracking.currentIntent < tracking.intents.size()) {
                                 startActivity(tracking.intents.get(tracking.currentIntent));
@@ -182,6 +195,10 @@ public class PictureQuestionActivity extends AppCompatActivity {
                             ScoreView scoreView = findViewById(R.id.scoreView);
                             ScoreView.incrementScore();
                             tracking.currentIntent += 1;
+
+
+                            // Update the SeekBar and text view
+                            InstentScore.incrementsc();
 
                             if (tracking.currentIntent < tracking.intents.size()) {
                                 startActivity(tracking.intents.get(tracking.currentIntent));
@@ -218,7 +235,7 @@ public class PictureQuestionActivity extends AppCompatActivity {
         tracking.intents.clear();
         tracking.currentIntent = 0;
         startActivity(intent);
-
+        InstentScore.resetsc();
         finish(); // Optional, if you want to close the current activity
     }
 

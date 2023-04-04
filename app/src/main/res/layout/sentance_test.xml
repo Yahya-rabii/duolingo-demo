@@ -3,10 +3,20 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0" />
+
+
     <TextView
         android:id="@+id/title_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="71dp"
         android:text="translate this text "
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -16,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/title_textview"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="93dp"
         android:text="@string/this_is_a_sample_sentence" />
 
     <EditText
@@ -24,19 +34,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/sentence_textview"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="67dp"
         android:hint="@string/enter_your_translation_here"
         android:inputType="text"
         android:minHeight="48dp"
         android:textColor="@color/teal_200" />
-
 
     <TextView
         android:id="@+id/selected_option_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/translation_edittext"
-        android:layout_marginTop="77dp"
+        android:layout_marginTop="72dp"
         android:layout_marginBottom="13dp"
         android:padding="16dp"
         android:text=""

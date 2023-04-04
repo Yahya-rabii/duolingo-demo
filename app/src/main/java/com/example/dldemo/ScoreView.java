@@ -11,6 +11,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class ScoreView extends View {
     private int maxScore;
     static int currentScore;
@@ -110,6 +125,55 @@ public class ScoreView extends View {
             TextView scoreTextView = parentView.findViewById(R.id.scoreper);
             scoreTextView.setText(" good job !!! " + currentScore + " %");
             scoreTextView.setText("good job! you get " + currentScore + " %");
+
+            System.out.println("dlkflksdfknllfkkslnfklnsd" + ScoreView.currentScore);
+
+
+// Get the ID of the current user
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+// Create a Firebase reference to the user's scores node
+            DatabaseReference userScoresRef = FirebaseDatabase.getInstance().getReference("users").child(userId).child("scores");
+
+// Get the current time in milliseconds
+            long currentTime = System.currentTimeMillis();
+
+// Create a map to hold the new score data
+            Map<String, Object> newScoreData = new HashMap<>();
+            newScoreData.put("score", currentScore);
+            newScoreData.put("time", currentTime);
+            newScoreData.put("level", LevelsActivity.lev);
+            newScoreData.put("language", LevelsActivity.lang);
+
+// Retrieve the existing score data from the database
+            userScoresRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    List<Map<String, Object>> existingScoreData = new ArrayList<>();
+
+                    // Add the existing score data to the list
+                    for (DataSnapshot scoreSnapshot : dataSnapshot.getChildren()) {
+                        GenericTypeIndicator<Map<String, Object>> t = new GenericTypeIndicator<Map<String, Object>>() {};
+                        existingScoreData.add(scoreSnapshot.getValue(t));
+                    }
+
+                    // Add the new score data to the list
+                    existingScoreData.add(newScoreData);
+
+                    // Save the updated score data to the database
+                    userScoresRef.setValue(existingScoreData);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle error
+                }
+            });
+
+
+
+
+
         }
     }
 
@@ -121,6 +185,7 @@ public class ScoreView extends View {
     public static void resetScore() {
         currentScore = 0;
     }
+
     public static void resettries() {
         tries = 0;
         protries = 0;

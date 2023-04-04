@@ -292,6 +292,10 @@ public class MainActivity extends AppCompatActivity implements ListAdapter.FinaL
                 Log.d(TAG, "onNavigationItemSelected: profile selected");
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                 return true;
+            case R.id.nav_dashb:
+                Log.d(TAG, "onNavigationItemSelected: dashboard selected");
+                startActivity(new Intent(MainActivity.this, DashboardActivity.class));
+                return true;
 
             case R.id.nav_logout:
                 Log.d(TAG, "onNavigationItemSelected: logging out");
