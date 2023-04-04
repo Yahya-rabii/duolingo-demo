@@ -9,11 +9,13 @@ import android.graphics.Shader;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +29,7 @@ public class SplashActivity extends AppCompatActivity {
     final String ON_BOARDING_SCREEN_VIEWED = "ON_BOARDING_SCREEN_VIEWED";
     Animation mAnimation;
     ImageView splashScreenAppLogo;
+    RelativeLayout passRelativeLayout;
     TextView splashScreenAppName, splashScreenMadeInMorocco;
 
     @Override
@@ -35,6 +38,17 @@ public class SplashActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        passRelativeLayout = findViewById(R.id.passRelativeLayout); // Added this line to initialize the RelativeLayout containing the 'pass' button
+
+        passRelativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finishAffinity();
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            }
+        });
+
 
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -75,6 +89,7 @@ public class SplashActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             finish();
         }, 5000);
+
 
         Log.d(TAG, "onCreate: ends");
     }

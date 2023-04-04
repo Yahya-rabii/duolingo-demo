@@ -4,4 +4,5 @@
     <item name="picture_layout" type="id" />
     <item name="picture_imageview" type="id" />
     <item name="word_options_layout" type="id" />
+    <item name="passRelativeLayout" type="id" />
 </resources>
