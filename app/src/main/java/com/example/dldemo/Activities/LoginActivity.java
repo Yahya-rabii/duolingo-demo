@@ -1,4 +1,4 @@
-package com.example.dldemo;
+package com.example.dldemo.Activities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -26,6 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.dldemo.R;
 import com.example.dldemo.model.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -143,7 +144,6 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        //todo System.out.println(" dsqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq "+gso.getAccount().name);
         Log.d(TAG, "onCreate: Checking internet connection");
         checkConnection(this);
 
@@ -337,7 +337,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void handleFirebaseAuthError(Task<AuthResult> task) {
         try {
-            throw task.getException();
+            throw Objects.requireNonNull(task.getException());
         } catch (FirebaseAuthInvalidUserException e) {
             Log.e(TAG, "handleFirebaseAuthError: invalid user", e);
             // ...

@@ -20,7 +20,7 @@
         tools:targetApi="33">
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".Activities.SplashActivity"
             android:exported="true"
             android:theme="@style/AppTheme"
             >
@@ -32,60 +32,56 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RegisterActivity"
+        <activity android:name=".Activities.RegisterActivity"
             android:theme="@style/AppTheme"
             />
-        <activity android:name=".LoginActivity"
+        <activity android:name=".Activities.LoginActivity"
             android:theme="@style/AppTheme"
-            android:parentActivityName=".SplashActivity"
+            android:parentActivityName=".Activities.SplashActivity"
             />
-        <activity android:name=".PictureQuestionActivity"
+        <activity android:name=".Activities.PictureQuestionActivity"
             android:theme="@style/AppTheme"
 
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".TextQuestionActivity"
+            android:parentActivityName=".Activities.MainActivity"/>
+        <activity android:name=".Activities.TextQuestionActivity"
             android:theme="@style/AppTheme"
 
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".SentenceQuestionActivity"
+            android:parentActivityName=".Activities.MainActivity"/>
+        <activity android:name=".Activities.SentenceQuestionActivity"
             android:theme="@style/AppTheme"
 
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".Activities.MainActivity"/>
 
-        <activity android:name=".TestActivity"
+        <activity android:name=".Activities.TestActivity"
             android:theme="@style/AppTheme"
 
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".Activities.MainActivity"/>
 
-        <activity android:name=".LevelsActivity"
-            android:theme="@style/AppTheme"
-
-            />
-        <activity android:name=".DashboardActivity"
+        <activity android:name=".Activities.LevelsActivity"
             android:theme="@style/AppTheme"
 
             />
-        <activity android:name=".ProfileActivity"
+        <activity android:name=".Activities.DashboardActivity"
             android:theme="@style/AppTheme"
-            />
-        <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme"
-            />
-        <activity android:name=".ForgotPasswordActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".AboutUsActivity"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".FeedBackActivity"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".MainActivity"/>
 
+            />
+        <activity android:name=".Activities.ProfileActivity"
+            android:theme="@style/AppTheme"
+            />
+        <activity android:name=".Activities.MainActivity"
+            android:theme="@style/AppTheme"
+            />
+        <activity android:name=".Activities.ForgotPasswordActivity"
+            android:parentActivityName=".Activities.MainActivity"/>
+        <activity android:name=".Activities.AboutUsActivity"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".Activities.MainActivity"/>
+        <activity android:name=".Activities.FeedBackActivity"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".Activities.MainActivity"/>
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-4955404294529066~6991752987"/>
-        <!--        <meta-data-->
-        <!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-        <!--            android:value="ca-app-pub-3940256099942544~3347511713"/>-->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

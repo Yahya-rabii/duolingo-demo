@@ -1,4 +1,4 @@
-package com.example.dldemo;
+package com.example.dldemo.Helpers;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.dldemo.Activities.LevelsActivity;
+import com.example.dldemo.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,8 +37,7 @@ public class ScoreView extends View {
     private Paint backgroundPaint;
     private Paint borderPaint;
     private Paint scorePaint;
-    static int tries = 0;
-    static int protries = 0;
+    public static int tries = 0;
 
     public ScoreView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -199,6 +200,5 @@ public class ScoreView extends View {
 
     public static void resettries() {
         tries = 0;
-        protries = 0;
     }
 }

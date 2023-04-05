@@ -41,7 +41,7 @@
 
     <activity
         android:id="@+id/nav_logout"
-        android:name="com.example.dldemo.LoginActivity"
+        android:name="com.example.dldemo.Activities.LoginActivity"
         android:label="logout"
         tools:layout="@layout/activity_login" />
 

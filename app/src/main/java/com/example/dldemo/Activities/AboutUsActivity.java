@@ -1,4 +1,4 @@
-package com.example.dldemo;
+package com.example.dldemo.Activities;
 
 import android.os.Bundle;
 import android.view.Gravity;
@@ -6,6 +6,8 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.dldemo.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

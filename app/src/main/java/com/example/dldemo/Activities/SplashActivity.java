@@ -1,4 +1,4 @@
-package com.example.dldemo;
+package com.example.dldemo.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.dldemo.R;
 import com.google.android.gms.ads.MobileAds;
 
 @SuppressLint("CustomSplashScreen")

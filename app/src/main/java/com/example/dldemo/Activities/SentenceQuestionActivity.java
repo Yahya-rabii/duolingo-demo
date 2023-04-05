@@ -1,4 +1,4 @@
-package com.example.dldemo;
+package com.example.dldemo.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.dldemo.Helpers.InstentScore;
+import com.example.dldemo.R;
+import com.example.dldemo.Helpers.ScoreView;
 import com.example.dldemo.Tests.SentenceQuestion;
+import com.example.dldemo.Helpers.tracking;
 
 import java.util.Objects;
 
@@ -41,7 +45,6 @@ public class SentenceQuestionActivity extends AppCompatActivity {
             String userAnswer = mCorrectionEditText.getText().toString().toLowerCase();
             boolean isCorrect = true;
 
-            System.out.println(userAnswer.toLowerCase() + "  ===  " + mQuestion.getTranslation().toLowerCase());
 
             TextView feedback;
 

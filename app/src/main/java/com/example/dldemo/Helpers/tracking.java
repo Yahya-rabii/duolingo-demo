@@ -1,4 +1,4 @@
-package com.example.dldemo;
+package com.example.dldemo.Helpers;
 
 import android.content.Intent;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 
 
-    static int currentIntent;
+    public static int currentIntent;
     public static List<Intent> intents= new ArrayList<>();
 
 

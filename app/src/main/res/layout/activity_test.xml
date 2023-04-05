@@ -28,7 +28,7 @@
     </RelativeLayout>
 
 
-        <com.example.dldemo.ScoreView
+        <com.example.dldemo.Helpers.ScoreView
             android:id="@+id/scoreView"
             android:layout_width="200dp"
             android:layout_height="200dp"

@@ -1,4 +1,4 @@
-package com.example.dldemo;
+package com.example.dldemo.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +20,7 @@ import androidx.navigation.NavOptions;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dldemo.R;
 import com.example.dldemo.adapters.ListAdapter;
 import com.example.dldemo.model.LangModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;

@@ -1,4 +1,4 @@
-package com.example.dldemo;
+package com.example.dldemo.Activities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,7 +11,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.dldemo.Helpers.InstentScore;
+import com.example.dldemo.R;
+import com.example.dldemo.Helpers.ScoreView;
 import com.example.dldemo.Tests.PictureQuestion;
+import com.example.dldemo.Helpers.tracking;
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
@@ -35,7 +39,6 @@ public class PictureQuestionActivity extends AppCompatActivity {
 
         // Set the image
         ImageView imageView = findViewById(R.id.picture_imageview);
-        System.out.println("hahouwa" + mQuestion.getImage_Url());
         Picasso.get().load(mQuestion.getImage_Url()).into(imageView);
 
 
@@ -102,7 +105,6 @@ public class PictureQuestionActivity extends AppCompatActivity {
                 } else this.selectedOption = "rien";
 
 
-                System.out.println(selectedOptionTextView);
                 TextView feedbackTextView = findViewById(R.id.selected_option_textview);
                 feedbackTextView.setText(selectedOption);
 
@@ -229,7 +231,6 @@ public class PictureQuestionActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, MainActivity.class);
-        ScoreView.protries = 0;
         ScoreView.tries = 0;
         tracking.intents.clear();
         tracking.currentIntent = 0;

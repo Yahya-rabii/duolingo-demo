@@ -1,9 +1,9 @@
-package com.example.dldemo;
+package com.example.dldemo.Helpers;
 
 public class InstentScore {
 
 
-    static int score = 0; // Initialize the score to 0
+    public static int score = 0; // Initialize the score to 0
 
     public static void incrementsc() {
 

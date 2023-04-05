@@ -1,4 +1,4 @@
-package com.example.dldemo;
+package com.example.dldemo.Activities;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.dldemo.Helpers.InstentScore;
+import com.example.dldemo.R;
+
 public class LevelsActivity extends Activity {
 
 
-    static String lang;
-    static String lev;
+   public static String lang;
+   public static String lev;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

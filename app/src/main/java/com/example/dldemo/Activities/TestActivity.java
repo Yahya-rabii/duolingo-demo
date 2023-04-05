@@ -1,4 +1,4 @@
-package com.example.dldemo;
+package com.example.dldemo.Activities;
 
 import static android.content.ContentValues.TAG;
 
@@ -11,10 +11,13 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.dldemo.R;
+import com.example.dldemo.Helpers.ScoreView;
 import com.example.dldemo.Tests.PictureQuestion;
 import com.example.dldemo.Tests.Question;
 import com.example.dldemo.Tests.SentenceQuestion;
 import com.example.dldemo.Tests.TextQuestion;
+import com.example.dldemo.Helpers.tracking;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,7 +54,6 @@ public class TestActivity extends AppCompatActivity {
                 // Reset the score
                 ScoreView.resetScore();
                 ScoreView.tries = 0;
-                ScoreView.protries = 0;
                 // Start the MainActivity
                 Intent intent = new Intent(TestActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -64,8 +66,7 @@ public class TestActivity extends AppCompatActivity {
 
         String language = getIntent().getStringExtra("Language");
         String level = getIntent().getStringExtra("level");
-        System.out.println("dfdfdfdffdfdfdfdfdfdf " + ScoreView.currentScore);
-       // System.out.println("dfdfdfdffdfdfdfdfdfdf " + level);
+
 
 
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {

@@ -1,4 +1,4 @@
-package com.example.dldemo;
+package com.example.dldemo.Activities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,7 +10,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.dldemo.Helpers.InstentScore;
+import com.example.dldemo.R;
+import com.example.dldemo.Helpers.ScoreView;
 import com.example.dldemo.Tests.TextQuestion;
+import com.example.dldemo.Helpers.tracking;
 
 import java.util.Objects;
 
@@ -95,7 +99,6 @@ public class TextQuestionActivity extends AppCompatActivity {
 
 
             TextView feedbackTextView;
-            System.out.println("heeeeeeeeeeeeeeeeeeeeeeeeyyyy");
 
             if (ScoreView.tries >= 2) {
                 Toast.makeText(this, "you did not passed please try later", Toast.LENGTH_SHORT).show();
@@ -108,10 +111,8 @@ public class TextQuestionActivity extends AppCompatActivity {
 
 
 
-                System.out.println(level);
                 if (Objects.equals(level, "beginner")) {
 
-                    System.out.println(selectedOption + "===" + mQuestion.getName().toLowerCase());
                     if (selectedOption.equals(mQuestion.getName().toLowerCase())) {
                         // If the answer is correct, show a message to the user
                         feedbackTextView = findViewById(R.id.selected_option_texttview);
