@@ -107,11 +107,10 @@ public class PictureQuestionActivity extends AppCompatActivity {
                 feedbackTextView.setText(selectedOption);
 
 
-                if (ScoreView.protries >= 1 || ScoreView.tries >= 3) {
+                if (ScoreView.tries >= 2) {
                     Toast.makeText(this, "you did not passed please try later", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(PictureQuestionActivity.this, MainActivity.class);
                     ScoreView.tries = 0;
-                    ScoreView.protries = 0;
                     startActivity(intent);
                     finish();
 
@@ -206,15 +205,15 @@ public class PictureQuestionActivity extends AppCompatActivity {
                             finish();
 
                         } else {
-                            feedbackTextView = findViewById(R.id.selected_option_textview);
-                            feedbackTextView.setText("Incorrect. The correct answer is: " + mQuestion.getName());
-                            ScoreView.protries++;
-                            tracking.currentIntent += 1;
+                            // If the answer is incorrect, show a message to the user and allow them to try again
 
-                            if (tracking.currentIntent < tracking.intents.size()) {
-                                startActivity(tracking.intents.get(tracking.currentIntent));
-                            }
+                            Toast.makeText(this, "you did not passed please try later", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(PictureQuestionActivity.this, MainActivity.class);
+                            ScoreView.tries=0;
+                            startActivity(intent);
+                            tracking.currentIntent += 1;
                             finish();
+
                         }
 
                     }

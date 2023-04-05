@@ -49,13 +49,13 @@ public class SentenceQuestionActivity extends AppCompatActivity {
             String level = getIntent().getStringExtra("level");
             String language = getIntent().getStringExtra("Language");
 
-            if (ScoreView.protries >= 1 || ScoreView.tries >= 3) {
+            if (ScoreView.tries >= 2) {
                 Toast.makeText(this, "you did not passed please try later", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SentenceQuestionActivity.this, MainActivity.class);
-                ScoreView.tries=0;
-                ScoreView.protries=0;
+                ScoreView.tries = 0;
                 startActivity(intent);
                 finish();
+
             } else {
 
 
@@ -147,15 +147,14 @@ public class SentenceQuestionActivity extends AppCompatActivity {
 
                     } else {
                         // If the answer is incorrect, show a message to the user and allow them to try again
-                        feedback = findViewById(R.id.selected_option_textview);
-                        feedback.setText("Incorrect!");
-                        ScoreView.protries++;
-                        tracking.currentIntent += 1;
 
-                        if (tracking.currentIntent < tracking.intents.size()){
-                            startActivity(tracking.intents.get(tracking.currentIntent));
-                        }
+                        Toast.makeText(this, "you did not passed please try later", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SentenceQuestionActivity.this, MainActivity.class);
+                        ScoreView.tries=0;
+                        startActivity(intent);
+                        tracking.currentIntent += 1;
                         finish();
+
                     }
 
                 }
